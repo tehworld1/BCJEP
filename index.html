@@ -1,353 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Petition for Climate Change Education</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      background-color: #f4f4f9;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Education Petition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, sans-serif;
+            scroll-behavior: smooth; /* Add smooth scrolling */
+        }
 
-    a {
-      text-decoration: none;
-      color: white;
-    }
+        /* Previous styles remain the same until nav... */
+        body {
+            background: #f0f9f0;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 60px; /* Add padding for fixed nav */
+        }
 
-    h1, h2, h3 {
-      margin: 0;
-    }
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            scroll-margin-top: 70px; /* Offset for fixed header */
+        }
 
-    /* Header */
-    header {
-      background: linear-gradient(to bottom right, #4caf50, #2c8c66);
-      color: white;
-      padding: 50px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+        .hero {
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: #f0f9f0;
+            background-size: cover;
+            background-position: center;
+        }
 
-    header h1 {
-      font-size: 3rem;
-      animation: slideIn 1s ease-out;
-    }
+        .leaf {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #4CAF50;
+            opacity: 0.2;
+            border-radius: 0 50% 50% 50%;
+            animation: fall 10s linear infinite;
+        }
 
-    header p {
-      font-size: 1.2rem;
-      margin-top: 20px;
-      animation: fadeIn 1s ease-in;
-    }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
 
-    header .btn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      background: #333;
-      color: white;
-      border: none;
-      font-size: 1rem;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #2E7D32;
+            animation: fadeIn 1s ease-out;
+        }
 
-    header .btn:hover {
-      background: #555;
-    }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2E7D32;
+            text-align: center;
+        }
 
-    @keyframes slideIn {
-      from {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #388E3C;
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #388E3C;
+            animation: slideUp 1s ease-out;
+        }
 
-    /* Commitments Section */
-    .section {
-      padding: 50px 20px;
-      text-align: center;
-    }
+        .commitments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
 
-    .section h2 {
-      font-size: 2.5rem;
-      color: #2c8c66;
-      margin-bottom: 30px;
-    }
+        .commitment-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
 
-    .commitments {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
+        .commitment-card:hover {
+            transform: translateY(-5px);
+        }
 
-    .commitment {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .commitment-number {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
 
-    .commitment:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
+        .why-matters {
+            background: #E8F5E9;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
 
-    .commitment h3 {
-      font-size: 1.5rem;
-      color: #4caf50;
-      margin-bottom: 15px;
-    }
+        .why-matters ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
 
-    /* Reasons Section */
-    .reasons {
-      background: #4caf50;
-      color: white;
-      padding: 50px 20px;
-    }
+        .why-matters li {
+            margin: 1rem 0;
+            padding-left: 1rem;
+        }
 
-    .reasons h2 {
-      margin-bottom: 30px;
-    }
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 1rem;
+        }
 
-    .reasons ul {
-      list-style-type: none;
-      padding: 0;
-    }
+        .cta-button:hover {
+            background: #388E3C;
+            transform: scale(1.05);
+        }
 
-    .reasons li {
-      font-size: 1.2rem;
-      margin: 10px 0;
-      animation: fadeInUp 1s ease-in;
-    }
+        .coming-soon {
+            text-align: center;
+            padding: 4rem;
+            background: #E8F5E9;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
 
-    @keyframes fadeInUp {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-    /* Placeholder Sections */
-    .placeholder {
-      padding: 50px 20px;
-      text-align: center;
-      background: #e8f5e9;
-    }
-
-    .placeholder h3 {
-      color: #2c8c66;
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-    }
-
-    .placeholder p {
-      font-size: 1rem;
-      color: #555;
-    }
-    /* Full Petition Section */
-.full-petition {
-  background: #f4f4f9;
-  padding: 50px 20px;
-  text-align: center;
-  margin-top: 50px;
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        
+        .commitment-card h3 a {
+    text-decoration: none;
+    color: inherit; /* Default link color */
+    transition: color 0.3s ease;
 }
 
-.full-petition h2 {
-  font-size: 2.5rem;
-  color: #2c8c66;
-  margin-bottom: 20px;
+.commitment-card h3 a:hover {
+    color: blue; /* Change link color to blue on hover */
 }
 
-.full-petition p {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 30px;
-}
 
-.full-petition .full-petition-btn {
-  padding: 15px 30px;
-  background: #4caf50;
-  color: white;
-  border: none;
-  font-size: 1rem;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background 0.3s;
-  text-decoration: none;
-}
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-.full-petition .full-petition-btn:hover {
-  background: #2c8c66;
-}
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
 
-/* blue links */
-    .blue-link {
-        color: #007bff; /* Sets the link color to blue */
-        text-decoration: none; /* Removes underline from the link */
-    }
+        nav a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
 
-    .blue-link:hover {
-        text-decoration: underline; /* Adds underline on hover for interaction */
-    }
+        nav a:hover {
+            color: #4CAF50;
+        }
 
-/* Bullets */
-.reasons ul {
-        list-style-type: disc; /* Default bullet style */
-        padding-left: 20px; /* Adds padding to align with the content */
-        font-size: 1.1rem;
-        line-height: 1.8;
-    }
+        /* New footer styles */
+        footer {
+            background: #2E7D32;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
 
-    .reasons li {
-        margin-bottom: 10px; /* Adds space between each bullet point */
-    }
-
-
-    /* Footer */
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#commitments">Commitments</a></li>
+            <li><a href="#why">Why It Matters</a></li>
+            <li><a href="#updates">Updates</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+    </nav>
 
-<!-- Header -->
-<header>
-  <h1>Together for a Sustainable Future</h1>
-  <p>Petition to the BASD School Board for Climate Change Education</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLScv_hWWHOcjM3fYaFEcrGFAlKHttUZ6KwEx_fXzYnPXtlpYxQ/viewform" class="btn" target="_blank">Sign the Petition</a>
+    <section id="home" class="hero">
+        <div class="leaf" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="leaf" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="leaf" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="leaf" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="leaf" style="left: 90%; animation-delay: 8s;"></div>
 
-</header>
+        <h1>Together for a Sustainable Future</h1>
+        <p class="subtitle">Petition to the BASD School Board for Climate Change Education</p>
+        
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScv_hWWHOcjM3fYaFEcrGFAlKHttUZ6KwEx_fXzYnPXtlpYxQ/viewform" class="cta-button" target="_blank">Sign the Petition</a>
+    </section>
 
-<!-- Commitments Section -->
-<section class="section">
-  <h2>The Six Commitments</h2>
-  <div class="commitments">
-    <div class="commitment">
-      <h3>
-        <a href="https://docs.google.com" target="_blank" style="text-decoration: none; color: inherit;">
-          1. Immediate Teacher-Driven CCE
-        </a>
-      </h3>
-      <p>Support voluntary teacher-driven climate change adaptations starting in the 2024-25 school year.</p>
+    <section id="commitments">
+    <h2>The Six Commitments</h2>
+    <div class="commitments">
+        <div class="commitment-card">
+            <div class="commitment-number">1</div>
+            <h3>
+                <a href="https://docs.google.com" target="_blank">
+                    1. Immediate Teacher-Driven CCE
+                </a>
+            </h3>
+            <p>Support voluntary teacher-driven climate change adaptations starting in the 2024-25 school year.</p>
+        </div>
+        <div class="commitment-card">
+            <div class="commitment-number">2</div>
+            <h3>
+                <a href="https://docs.google.com" target="_blank">
+                    Publicly Commit to Rapid Planning & Implementation of CCE
+                </a>
+            </h3>
+            <p>Accelerate climate and sustainability education adoption for all levels and disciplines.</p>
+        </div>
+        <div class="commitment-card">
+            <div class="commitment-number">3</div>
+            <h3>
+                <a href="https://docs.google.com" target="_blank">
+                    Fulfill 2014 Commitment
+                </a>
+            </h3>
+            <p>Recommit to the district's 2014 climate and sustainability goals with updated urgency.</p>
+        </div>
+        <div class="commitment-card">
+            <div class="commitment-number">4</div>
+            <h3>
+                <a href="https://docs.google.com" target="_blank">
+                    Restart Sustainability Committee
+                </a>
+            </h3>
+            <p>Empower a committee to oversee and assist climate education efforts with regular updates.</p>
+        </div>
+        <div class="commitment-card">
+            <div class="commitment-number">5</div>
+            <h3>
+                <a href="https://docs.google.com" target="_blank">
+                    Environmental Science Option
+                </a>
+            </h3>
+            <p>Add Environmental Science as a mandatory or prominent alternative to Chemistry/Physics.</p>
+        </div>
+        <div class="commitment-card">
+            <div class="commitment-number">6</div>
+            <h3>
+                <a href="https://docs.google.com" target="_blank">
+                    Fund Leadership Roles
+                </a>
+            </h3>
+            <p>Hire leadership staff and consultants to guide and oversee implementation.</p>
+        </div>
     </div>
-    
-    <div class="commitment">
-      <h3>
-        <a href="link-to-details.html" target="_blank" style="text-decoration: none; color: inherit;">
-          2. Publicly Commit to Rapid Planning & Implementation of CCE
-        </a>
-      </h3>
-      <p>Accelerate climate and sustainability education adoption for all levels and disciplines.</p>
-    </div>
-    
-    <div class="commitment">
-      <h3>
-        <a href="link-to-details.html" target="_blank" style="text-decoration: none; color: inherit;">
-          3. Fulfill 2014 Commitment
-        </a>
-      </h3>
-      <p>Recommit to the district’s 2014 climate and sustainability goals with updated urgency.</p>
-    </div>
-    
-    <div class="commitment">
-      <h3>
-        <a href="link-to-details.html" target="_blank" style="text-decoration: none; color: inherit;">
-          4. Restart Sustainability Committee
-        </a>
-      </h3>
-      <p>Empower a committee to oversee and assist climate education efforts with regular updates.</p>
-    </div>
-    
-    <div class="commitment">
-      <h3>
-        <a href="link-to-details.html" target="_blank" style="text-decoration: none; color: inherit;">
-          5. Environmental Science Option
-        </a>
-      </h3>
-      <p>Add Environmental Science as a mandatory or prominent alternative to Chemistry/Physics.</p>
-    </div>
-    
-    <div class="commitment">
-      <h3>
-        <a href="link-to-details.html" target="_blank" style="text-decoration: none; color: inherit;">
-          6. Fund Leadership Roles
-        </a>
-      </h3>
-      <p>Hire leadership staff and consultants to guide and oversee implementation.</p>
-    </div>
-  </div>
 </section>
 
+            </div>
+        </div>
+    </section>
 
-<!-- Reasons Section -->
-<section class="reasons">
-  <h2>Why This Matters</h2>
-  <ul>
-    <li>Due to the existential climate crisis and urgency to meet IPCC targets.</li>
-    <li>To address the unequal impacts on marginalized communities.</li>
-    <li>Education is key to combating climate change and empowering future leaders.</li>
-    <li>Pennsylvania lags behind in climate education standards.</li>
-    <li>No current BASD requirements for climate education exist.</li>
-  </ul>
-</section>
+    <section id="why">
+        <h2>Why This Matters</h2>
+        <div class="why-matters">
+            <ul>
+                <li>Due to the existential climate crisis and urgency to meet IPCC targets.</li>
+                <li>To address the unequal impacts on marginalized communities.</li>
+                <li>Education is key to combating climate change and empowering future leaders.</li>
+                <li>Pennsylvania lags behind in climate education standards.</li>
+                <li>No current BASD requirements for climate education exist.</li>
+            </ul>
+        </div>
+        <div style="text-align: center;">
+            <h3>Want to Read the Full Petition?</h3>
+            <p>If you'd like to read the full petition in detail, please click the button below.</p>
+            <a  href="https://docs.google.com/document/d/1yjYRGRC5X90Y9_QP29Fp_K1b_WjcQiNvKdPxSDzZfU0/edit?tab=t.0" class="cta-button" target="_blank"> Read the Full Petition</a>
+        </div>
+    </section>
 
-  <!-- Full Petition Section -->
-<section class="full-petition">
-  <h2>Want to Read the Full Petition?</h2>
-  <p>If you'd like to read the full petition in detail, please click the button below.</p>
-  <a href="https://docs.google.com/document/d/1yjYRGRC5X90Y9_QP29Fp_K1b_WjcQiNvKdPxSDzZfU0/edit?tab=t.0" class="btn full-petition-btn" target="_blank">Read the Full Petition</a>
-</section>
+    <section id="updates">
+        <h2>Updates on Our Progress</h2>
+        <div class="coming-soon">
+            <h3>Content coming soon!</h3>
+        </div>
+    </section>
 
-</section>
+    <section id="events">
+        <h2>Events & Campaigns</h2>
+        <div class="coming-soon">
+            <h3>Content coming soon!</h3>
+        </div>
+    </section>
 
-<!-- Placeholder Sections -->
-<section class="placeholder">
-  <h3>Updates on Our Progress</h3>
-  <p>Content coming soon!</p>
-</section>
+    <section id="team">
+        <h2>Meet the Team</h2>
+        <div class="coming-soon">
+            <h3>Content coming soon!</h3>
+        </div>
+    </section>
 
-<section class="placeholder">
-  <h3>Events & Campaigns</h3>
-  <p>Content coming soon!</p>
-</section>
-
-<section class="placeholder">
-  <h3>Meet the Team</h3>
-  <p>Content coming soon!</p>
-</section>
-
-<!-- Footer -->
-<footer>
-  <p>© 2024 Bethlehem Climate Justice Education Project | All Rights Reserved</p>
-  <p><a href="https://www.websitecarbon.com/website/bcjep-pages-dev/" target="_blank" class="blue-link">Cleaner than 100% of websites globally.</a></p>
-</footer>
-
+    <footer>
+        © 2024 Bethlehem Climate Justice Education Project | All Rights Reserved
+    </footer>
 </body>
 </html>
