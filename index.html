@@ -4,31 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Climate Change Education Petition</title>
-    <style>
+        <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: system-ui, sans-serif;
-            scroll-behavior: smooth; /* Add smooth scrolling */
+            scroll-behavior: smooth;
         }
 
-        /* General body styles */
         body {
             background: #f0f9f0;
             color: #333;
             line-height: 1.6;
-            padding-top: 60px; /* Add padding for fixed nav */
+            padding-top: 60px;
         }
 
-        section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            scroll-margin-top: 70px; /* Offset for fixed header */
+        h1 {
+            font-size: 3.5rem;  /* Default for larger screens */
+            margin-bottom: 1rem;
+            color: #2E7D32;
+            animation: fadeIn 1s ease-out;
         }
 
-        /* Hero section */
+        .subtitle {
+            font-size: 1.5rem; /* Default subtitle size */
+            margin-bottom: 2rem;
+            color: #388E3C;
+            animation: slideUp 1s ease-out;
+        }
+
+        /* Media query for small screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem; /* Smaller font size for mobile */
+            }
+
+            .subtitle {
+                font-size: 1.2rem; /* Smaller subtitle size for mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem; /* Even smaller for very small screens */
+            }
+
+            .subtitle {
+                font-size: 1rem; /* Even smaller subtitle for very small screens */
+            }
+        }
+
+        /* Additional styles for the overall layout */
         .hero {
             min-height: 100vh;
             padding: 2rem;
@@ -43,73 +70,39 @@
             background-size: cover;
             background-position: center;
         }
+  
 
-        /* Leaves animation */
         .leaf {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: #4CAF50;
-            opacity: 0; /* Initially invisible */
-            border-radius: 0 50% 50% 50%;
-            animation: fall 10s linear infinite;
+    	position: absolute;
+   		width: 50px;
+    	height: 50px;
+    	background: #4CAF50;
+    	opacity: 0; /* Initially invisible */
+    	border-radius: 0 50% 50% 50%;
+    	animation: fall 10s linear infinite;
+	}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0; /* Invisible at the start */
+    }
+    10% {
+        opacity: 0.2; /* Fade in at the start of the fall */
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.2; /* Maintain visibility during fall */
+    }
+}
+
         }
 
         @keyframes fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 0; /* Invisible at the start */
-            }
-            10% {
-                opacity: 0.2; /* Fade in at the start of the fall */
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0.2; /* Maintain visibility during fall */
-            }
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
 
-        /* Header and navigation styles */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between; /* Aligns nav items on both ends */
-            align-items: center;
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #2E7D32;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #4CAF50;
-        }
-
-        .org-name {
-            font-size: 1.8rem;
-            color: #2E7D32;
-            font-weight: bold;
-        }
-
-        /* Hero text styling */
         h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
@@ -137,6 +130,48 @@
             animation: slideUp 1s ease-out;
         }
 
+        .commitments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .commitment-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .commitment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .commitment-number {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        .why-matters {
+            background: #E8F5E9;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .why-matters ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
+
+        .why-matters li {
+            margin: 1rem 0;
+            padding-left: 1rem;
+        }
+
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
@@ -154,13 +189,12 @@
             transform: scale(1.05);
         }
 
-        /* Footer styles */
-        footer {
-            background: #2E7D32;
-            color: white;
+        .coming-soon {
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 4rem;
+            background: #E8F5E9;
+            border-radius: 1rem;
+            margin: 2rem 0;
         }
 
         @keyframes fadeIn {
@@ -177,6 +211,79 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        
+        
+        .commitment-card h3 a {
+    text-decoration: none;
+    color: inherit; /* Default link color */
+    transition: color 0.3s ease;
+}
+
+.commitment-card h3 a:hover {
+    color: blue; /* Change link color to blue on hover */
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between name and nav items */
+}
+
+nav .org-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2E7D32;
+    margin: 0;
+}
+
+nav .org-name a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+nav .org-name a:hover {
+    color: #388E3C;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem; /* Add spacing between buttons */
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #2E7D32;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-size: 0.95rem; /* Adjust font size for links */
+}
+
+nav a:hover {
+    color: #4CAF50;
+}
+
+
+
+        /* New footer styles */
+        footer {
+            background: #2E7D32;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
         }
 
         @media (max-width: 600px) {
@@ -196,19 +303,17 @@
 </head>
 <body>
     <nav>
-        <!-- Organization name on the left side of the navbar -->
-        <div class="org-name">Bethlehem Climate Justice Education Project</div>
+    <div class="org-name"><a href="#">Bethlehem Climate Justice Education Project</a></div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-        <!-- Navigation links on the right side of the navbar -->
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#commitments">Commitments</a></li>
-            <li><a href="#why">Why It Matters</a></li>
-            <li><a href="#updates">Updates</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#team">Team</a></li>
-        </ul>
-    </nav>
+    
+</nav>
 
     <section id="home" class="hero">
         <div class="leaf" style="left: 10%; animation-delay: 0s;"></div>
@@ -325,3 +430,12 @@
             <h3>Content coming soon!</h3>
         </div>
     </section>
+
+    <footer>
+        © 2024 Bethlehem Climate Justice Education Project | All Rights Reserved
+	    
+  <p>This page is powered by Cloudflare, running on 100% renewable energy.</p>
+
+    </footer>
+</body>
+</html>
