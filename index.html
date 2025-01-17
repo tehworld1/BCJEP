@@ -44,13 +44,29 @@
         }
 
         .leaf {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: #4CAF50;
-            opacity: 0.2;
-            border-radius: 0 50% 50% 50%;
-            animation: fall 10s linear infinite;
+    	position: absolute;
+   		width: 50px;
+    	height: 50px;
+    	background: #4CAF50;
+    	opacity: 0; /* Initially invisible */
+    	border-radius: 0 50% 50% 50%;
+    	animation: fall 10s linear infinite;
+	}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0; /* Invisible at the start */
+    }
+    10% {
+        opacity: 0.2; /* Fade in at the start of the fall */
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.2; /* Maintain visibility during fall */
+    }
+}
+
         }
 
         @keyframes fall {
@@ -367,3 +383,4 @@
     </footer>
 </body>
 </html>
+
