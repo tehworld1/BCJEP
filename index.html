@@ -4,58 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Climate Change Education Petition</title>
-        <style>
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: system-ui, sans-serif;
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* Add smooth scrolling */
         }
 
+        /* Previous styles remain the same until nav... */
         body {
             background: #f0f9f0;
             color: #333;
             line-height: 1.6;
-            padding-top: 60px;
+            padding-top: 60px; /* Add padding for fixed nav */
         }
 
-        h1 {
-            font-size: 3.5rem;  /* Default for larger screens */
-            margin-bottom: 1rem;
-            color: #2E7D32;
-            animation: fadeIn 1s ease-out;
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            scroll-margin-top: 70px; /* Offset for fixed header */
         }
 
-        .subtitle {
-            font-size: 1.5rem; /* Default subtitle size */
-            margin-bottom: 2rem;
-            color: #388E3C;
-            animation: slideUp 1s ease-out;
-        }
-
-        /* Media query for small screens */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem; /* Smaller font size for mobile */
-            }
-
-            .subtitle {
-                font-size: 1.2rem; /* Smaller subtitle size for mobile */
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem; /* Even smaller for very small screens */
-            }
-
-            .subtitle {
-                font-size: 1rem; /* Even smaller subtitle for very small screens */
-            }
-        }
-
-        /* Additional styles for the overall layout */
         .hero {
             min-height: 100vh;
             padding: 2rem;
@@ -70,7 +42,6 @@
             background-size: cover;
             background-position: center;
         }
-  
 
         .leaf {
     	position: absolute;
@@ -224,7 +195,8 @@
     color: blue; /* Change link color to blue on hover */
 }
 
-nav {
+
+       nav {
     position: fixed;
     top: 0;
     width: 100%;
@@ -275,8 +247,6 @@ nav a:hover {
     color: #4CAF50;
 }
 
-
-
         /* New footer styles */
         footer {
             background: #2E7D32;
@@ -308,10 +278,6 @@ nav a:hover {
         
     </ul>
 </nav>
-
-    
-</nav>
-
     <section id="home" class="hero">
         <div class="leaf" style="left: 10%; animation-delay: 0s;"></div>
         <div class="leaf" style="left: 30%; animation-delay: 2s;"></div>
