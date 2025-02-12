@@ -12,14 +12,15 @@
             padding: 0;
             box-sizing: border-box;
             font-family: system-ui, sans-serif;
-            scroll-behavior: smooth; /* Add smooth scrolling */
+            scroll-behavior: smooth; /* Smooth scrolling */
         }
 
+        /* Overall page settings */
         body {
             background: #f0f9f0;
             color: #333;
             line-height: 1.6;
-            padding-top: 60px; /* Add padding for fixed nav */
+            padding-top: 60px; /* Leaves space for fixed nav */
         }
 
         section {
@@ -29,8 +30,9 @@
             scroll-margin-top: 70px; /* Offset for fixed header */
         }
 
+        /* Hero section (desktop defaults) */
         .hero {
-            min-height: 100vh;
+            min-height: 100vh; /* Full viewport height on larger screens */
             padding: 2rem;
             display: flex;
             flex-direction: column;
@@ -44,37 +46,7 @@
             background-position: center;
         }
 
-        /* Bouncing scroll indicator */
-        .scroll-down-indicator {
-            position: absolute;
-            bottom: 40px; /* Adjust as needed */
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            cursor: pointer;
-            color: #2E7D32;
-            font-weight: bold;
-        }
-
-        .scroll-down-indicator .arrow {
-            font-size: 2rem; /* Size of arrow */
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-down-indicator p {
-            margin-top: 0.25rem;
-            font-size: 1rem;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(10px);
-            }
-        }
-
+        /* Leaves falling (just decorative) */
         .leaf {
             position: absolute;
             width: 50px;
@@ -84,41 +56,27 @@
             border-radius: 0 50% 50% 50%;
             animation: fall 10s linear infinite;
         }
-
         @keyframes fall {
             0% {
                 transform: translateY(-100vh) rotate(0deg);
                 opacity: 0; /* Invisible at the start */
             }
             10% {
-                opacity: 0.2; /* Fade in at the start of the fall */
+                opacity: 0.2; /* Fade in */
             }
             100% {
                 transform: translateY(100vh) rotate(360deg);
-                opacity: 0.2; /* Maintain visibility during fall */
+                opacity: 0.2; /* Fall down */
             }
         }
 
+        /* Main Hero Text */
         h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             color: #2E7D32;
             animation: fadeIn 1s ease-out;
         }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #2E7D32;
-            text-align: center;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #388E3C;
-        }
-
         .subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
@@ -126,48 +84,23 @@
             animation: slideUp 1s ease-out;
         }
 
-        .commitments {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+        /* Keyframe animations for hero text */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .commitment-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .commitment-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .commitment-number {
-            font-size: 2rem;
-            color: #4CAF50;
-            margin-bottom: 1rem;
-        }
-
-        .why-matters {
-            background: #E8F5E9;
-            border-radius: 1rem;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .why-matters ul {
-            list-style-position: inside;
-            margin: 1rem 0;
-        }
-
-        .why-matters li {
-            margin: 1rem 0;
-            padding-left: 1rem;
-        }
-
+        /* CTA buttons (like "Sign the Petition") */
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
@@ -179,12 +112,75 @@
             transition: all 0.3s ease;
             margin: 1rem;
         }
-
         .cta-button:hover {
             background: #388E3C;
             transform: scale(1.05);
         }
 
+        /* The "Scroll" text + arrow at bottom center of hero */
+        .scroll-down-indicator {
+            position: absolute;
+            bottom: 40px; /* Adjust as needed on desktop */
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            cursor: pointer;
+            color: #2E7D32;
+            font-weight: bold;
+        }
+        .scroll-down-indicator p {
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+        .scroll-down-indicator .arrow {
+            font-size: 2rem; /* Size of the arrow */
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Commitments grid */
+        .commitments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .commitment-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .commitment-card:hover {
+            transform: translateY(-5px);
+        }
+        .commitment-number {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        /* "Why This Matters" section styling */
+        .why-matters {
+            background: #E8F5E9;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .why-matters ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
+        .why-matters li {
+            margin: 1rem 0;
+            padding-left: 1rem;
+        }
+
+        /* Coming soon placeholders */
         .coming-soon {
             text-align: center;
             padding: 4rem;
@@ -193,32 +189,17 @@
             margin: 2rem 0;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Link within the commitment cards */
         .commitment-card h3 a {
             text-decoration: none;
-            color: inherit; /* Default link color */
+            color: inherit;
             transition: color 0.3s ease;
         }
-
         .commitment-card h3 a:hover {
-            color: blue; /* Change link color to blue on hover */
+            color: blue;
         }
 
+        /* Fixed nav bar */
         nav {
             position: fixed;
             top: 0;
@@ -232,32 +213,27 @@
             align-items: center;
             justify-content: space-between; /* Space between name and nav items */
         }
-
         nav .org-name {
             font-size: 1.2rem;
             font-weight: bold;
             color: #2E7D32;
             margin: 0;
         }
-
         nav .org-name a {
             text-decoration: none;
             color: inherit;
             transition: color 0.3s ease;
         }
-
         nav .org-name a:hover {
             color: #388E3C;
         }
-
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.5rem; /* Add spacing between buttons */
+            gap: 1.5rem; /* Spacing between nav items */
             margin: 0;
             padding: 0;
         }
-
         nav a {
             color: #2E7D32;
             text-decoration: none;
@@ -265,12 +241,11 @@
             transition: color 0.3s ease;
             font-size: 0.95rem; /* Adjust font size for links */
         }
-
         nav a:hover {
             color: #4CAF50;
         }
 
-        /* New footer styles */
+        /* Footer */
         footer {
             background: #2E7D32;
             color: white;
@@ -279,60 +254,73 @@
             margin-top: 2rem;
         }
 
-         /* --- Existing Mobile Media Query --- */
+        /* --- Mobile adjustments (max-width: 600px) --- */
         @media (max-width: 600px) {
-            nav ul {
-                gap: 1rem;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-
-            /* 1) Make hero section taller on mobile */
+            /* Hero is no longer forced to be 100vh on mobile */
             .hero {
-                min-height: 110vh; /* Or 120vh if you need more room */
+                min-height: auto;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
             }
 
-            /* 2) Raise the arrow indicator higher on mobile */
+            /* Scale down the main title and subtitles */
+            h1 {
+                font-size: 2rem;    /* smaller than 3.5rem */
+                margin-bottom: 1rem;
+            }
+            .subtitle {
+                font-size: 1rem;    /* smaller than 1.5rem */
+                margin-bottom: 1.5rem;
+            }
+
+            /* Make the "Sign the Petition" button smaller */
+            .cta-button {
+                padding: 0.75rem 1.5rem; /* less padding */
+                font-size: 1rem;
+            }
+
+            /* Raise the scroll arrow if needed */
             .scroll-down-indicator {
-                bottom: 70px; /* Adjust if still too low */
+                bottom: 40px; /* or 50px, 60px... test what you prefer */
             }
         }
-
-      
     </style>
 </head>
 <body>
     <nav>
         <div class="org-name"><a href="#">Bethlehem Climate Justice Education Project</a></div>
         <ul>
-            <!-- Add your nav items here if desired -->
+            <!-- Add nav items if desired -->
         </ul>
     </nav>
 
     <section id="home" class="hero">
+        <!-- Decorative leaves falling -->
         <div class="leaf" style="left: 10%; animation-delay: 0s;"></div>
         <div class="leaf" style="left: 30%; animation-delay: 2s;"></div>
         <div class="leaf" style="left: 50%; animation-delay: 4s;"></div>
         <div class="leaf" style="left: 70%; animation-delay: 6s;"></div>
         <div class="leaf" style="left: 90%; animation-delay: 8s;"></div>
 
+        <!-- Hero content -->
         <h1>Together for a Sustainable Future</h1>
         <p class="subtitle">Petition to the BASD School Board for Climate Change Education</p>
         
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScv_hWWHOcjM3fYaFEcrGFAlKHttUZ6KwEx_fXzYnPXtlpYxQ/viewform" class="cta-button" target="_blank">
+        <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScv_hWWHOcjM3fYaFEcrGFAlKHttUZ6KwEx_fXzYnPXtlpYxQ/viewform"
+            class="cta-button"
+            target="_blank"
+        >
             Sign the Petition
         </a>
 
-        <!-- Bouncing "Scroll" Arrow in the bottom center of hero -->
-        <div class="scroll-down-indicator" onclick="document.querySelector('#commitments').scrollIntoView({behavior: 'smooth'});">
-            <div class="arrow">&darr;</div>
+        <!-- Bouncing scroll text + arrow, clicks to #commitments -->
+        <div
+            class="scroll-down-indicator"
+            onclick="document.querySelector('#commitments').scrollIntoView({ behavior: 'smooth' });"
+        >
             <p>Scroll</p>
+            <div class="arrow">&darr;</div>
         </div>
     </section>
 
@@ -410,7 +398,11 @@
         <div style="text-align: center;">
             <h3>Want to Read the Full Petition?</h3>
             <p>If you'd like to read the full petition in detail, please click the button below.</p>
-            <a href="https://docs.google.com/document/d/1yjYRGRC5X90Y9_QP29Fp_K1b_WjcQiNvKdPxSDzZfU0/edit?tab=t.0" class="cta-button" target="_blank">
+            <a
+                href="https://docs.google.com/document/d/1yjYRGRC5X90Y9_QP29Fp_K1b_WjcQiNvKdPxSDzZfU0/edit?tab=t.0"
+                class="cta-button"
+                target="_blank"
+            >
                 Read the Full Petition
             </a>
         </div>
@@ -442,4 +434,3 @@
     </footer>
 </body>
 </html>
-
