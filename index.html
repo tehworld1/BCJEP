@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <link rel="icon" type="image/x-icon" href="icon.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Advocating for Climate Justice Education in the BASD">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Advocating for Climate Justice Education in the BASD" />
     <title>BCJEP - Bethlehem Climate Justice Education Project | Climate Justice Education</title>
     <style>
         * {
@@ -46,7 +46,7 @@
             background-position: center;
         }
 
-        /* Leaves falling (just decorative) */
+        /* Leaves falling (decorative) */
         .leaf {
             position: absolute;
             width: 50px;
@@ -59,14 +59,14 @@
         @keyframes fall {
             0% {
                 transform: translateY(-100vh) rotate(0deg);
-                opacity: 0; /* Invisible at the start */
+                opacity: 0;
             }
             10% {
-                opacity: 0.2; /* Fade in */
+                opacity: 0.2;
             }
             100% {
                 transform: translateY(100vh) rotate(360deg);
-                opacity: 0.2; /* Fall down */
+                opacity: 0.2;
             }
         }
 
@@ -100,7 +100,7 @@
             }
         }
 
-        /* CTA buttons (like "Sign the Petition") */
+        /* CTA buttons (e.g., "Sign the Petition") */
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
@@ -117,10 +117,13 @@
             transform: scale(1.05);
         }
 
-        /* The "Scroll" text + arrow at bottom center of hero */
+        /*
+         * The "Scroll" text + arrow at bottom center (DESKTOP default)
+         * We'll override this in mobile media query.
+         */
         .scroll-down-indicator {
             position: absolute;
-            bottom: 40px; /* Adjust as needed on desktop */
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -152,7 +155,7 @@
             background: white;
             padding: 2rem;
             border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
         .commitment-card:hover {
@@ -189,7 +192,7 @@
             margin: 2rem 0;
         }
 
-        /* Link within the commitment cards */
+        /* Links within commitment cards */
         .commitment-card h3 a {
             text-decoration: none;
             color: inherit;
@@ -208,7 +211,7 @@
             padding: 0.5rem 1rem;
             z-index: 1000;
             backdrop-filter: blur(5px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: space-between; /* Space between name and nav items */
@@ -239,7 +242,7 @@
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
-            font-size: 0.95rem; /* Adjust font size for links */
+            font-size: 0.95rem;
         }
         nav a:hover {
             color: #4CAF50;
@@ -254,7 +257,11 @@
             margin-top: 2rem;
         }
 
-        /* --- Mobile adjustments (max-width: 600px) --- */
+        /*
+         * -- MOBILE ONLY (max-width: 600px) --
+         * Switch arrow from absolute to static flow
+         * so it won't overlap the button on small screens
+         */
         @media (max-width: 600px) {
             /* Hero is no longer forced to be 100vh on mobile */
             .hero {
@@ -263,25 +270,30 @@
                 padding-bottom: 2rem;
             }
 
-            /* Scale down the main title and subtitles */
+            /* Scale down main title and subtitle on mobile */
             h1 {
-                font-size: 2rem;    /* smaller than 3.5rem */
+                font-size: 2rem;
                 margin-bottom: 1rem;
             }
             .subtitle {
-                font-size: 1rem;    /* smaller than 1.5rem */
+                font-size: 1rem;
                 margin-bottom: 1.5rem;
             }
-
-            /* Make the "Sign the Petition" button smaller */
+            /* Make the CTA button smaller */
             .cta-button {
-                padding: 0.75rem 1.5rem; /* less padding */
+                padding: 0.75rem 1.5rem;
                 font-size: 1rem;
             }
 
-            /* Raise the scroll arrow if needed */
+            /* Let the scroll arrow appear AFTER the button in normal flow */
             .scroll-down-indicator {
-                bottom: 40px; /* or 50px, 60px... test what you prefer */
+                position: static;         /* No absolute positioning */
+                margin: 1rem auto 0;      /* Center it, with some top margin */
+                text-align: center;
+            }
+            /* Optionally shrink arrow size on mobile */
+            .scroll-down-indicator .arrow {
+                font-size: 1.5rem; 
             }
         }
     </style>
@@ -290,7 +302,7 @@
     <nav>
         <div class="org-name"><a href="#">Bethlehem Climate Justice Education Project</a></div>
         <ul>
-            <!-- Add nav items if desired -->
+            <!-- Add nav items here if desired -->
         </ul>
     </nav>
 
@@ -314,7 +326,7 @@
             Sign the Petition
         </a>
 
-        <!-- Bouncing scroll text + arrow, clicks to #commitments -->
+        <!-- Scroll text + arrow, links to #commitments -->
         <div
             class="scroll-down-indicator"
             onclick="document.querySelector('#commitments').scrollIntoView({ behavior: 'smooth' });"
@@ -330,54 +342,42 @@
             <div class="commitment-card">
                 <div class="commitment-number">1</div>
                 <h3>
-                    <a href="https://docs.google.com" target="_blank">
-                        1. Immediate Teacher-Driven CCE
-                    </a>
+                    <a href="https://docs.google.com" target="_blank">1. Immediate Teacher-Driven CCE</a>
                 </h3>
                 <p>Support voluntary teacher-driven climate change adaptations starting in the 2024-25 school year.</p>
             </div>
             <div class="commitment-card">
                 <div class="commitment-number">2</div>
                 <h3>
-                    <a href="https://docs.google.com" target="_blank">
-                        Publicly Commit to Rapid Planning & Implementation of CCE
-                    </a>
+                    <a href="https://docs.google.com" target="_blank">Publicly Commit to Rapid Planning & Implementation of CCE</a>
                 </h3>
                 <p>Accelerate climate and sustainability education adoption for all levels and disciplines.</p>
             </div>
             <div class="commitment-card">
                 <div class="commitment-number">3</div>
                 <h3>
-                    <a href="https://docs.google.com" target="_blank">
-                        Fulfill 2014 Commitment
-                    </a>
+                    <a href="https://docs.google.com" target="_blank">Fulfill 2014 Commitment</a>
                 </h3>
                 <p>Recommit to the district's 2014 climate and sustainability goals with updated urgency.</p>
             </div>
             <div class="commitment-card">
                 <div class="commitment-number">4</div>
                 <h3>
-                    <a href="https://docs.google.com" target="_blank">
-                        Restart Sustainability Committee
-                    </a>
+                    <a href="https://docs.google.com" target="_blank">Restart Sustainability Committee</a>
                 </h3>
                 <p>Empower a committee to oversee and assist climate education efforts with regular updates.</p>
             </div>
             <div class="commitment-card">
                 <div class="commitment-number">5</div>
                 <h3>
-                    <a href="https://docs.google.com" target="_blank">
-                        Environmental Science Option
-                    </a>
+                    <a href="https://docs.google.com" target="_blank">Environmental Science Option</a>
                 </h3>
                 <p>Add Environmental Science as a mandatory or prominent alternative to Chemistry/Physics.</p>
             </div>
             <div class="commitment-card">
                 <div class="commitment-number">6</div>
                 <h3>
-                    <a href="https://docs.google.com" target="_blank">
-                        Fund Leadership Roles
-                    </a>
+                    <a href="https://docs.google.com" target="_blank">Fund Leadership Roles</a>
                 </h3>
                 <p>Hire leadership staff and consultants to guide and oversee implementation.</p>
             </div>
@@ -434,3 +434,4 @@
     </footer>
 </body>
 </html>
+
