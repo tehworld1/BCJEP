@@ -4,7 +4,7 @@
     <link rel="icon" type="image/x-icon" href="icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content=Advocating for Climate Justice Education in the BASD">
+    <meta name="description" content="Advocating for Climate Justice Education in the BASD">
     <title>BCJEP - Bethlehem Climate Justice Education Project | Climate Justice Education</title>
     <style>
         * {
@@ -15,7 +15,6 @@
             scroll-behavior: smooth; /* Add smooth scrolling */
         }
 
-        /* Previous styles remain the same until nav... */
         body {
             background: #f0f9f0;
             color: #333;
@@ -45,35 +44,59 @@
             background-position: center;
         }
 
+        /* Bouncing scroll indicator */
+        .scroll-down-indicator {
+            position: absolute;
+            bottom: 40px; /* Adjust as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            cursor: pointer;
+            color: #2E7D32;
+            font-weight: bold;
+        }
+
+        .scroll-down-indicator .arrow {
+            font-size: 2rem; /* Size of arrow */
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down-indicator p {
+            margin-top: 0.25rem;
+            font-size: 1rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
         .leaf {
-    	position: absolute;
-   		width: 50px;
-    	height: 50px;
-    	background: #4CAF50;
-    	opacity: 0; /* Initially invisible */
-    	border-radius: 0 50% 50% 50%;
-    	animation: fall 10s linear infinite;
-	}
-
-@keyframes fall {
-    0% {
-        transform: translateY(-100vh) rotate(0deg);
-        opacity: 0; /* Invisible at the start */
-    }
-    10% {
-        opacity: 0.2; /* Fade in at the start of the fall */
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0.2; /* Maintain visibility during fall */
-    }
-}
-
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #4CAF50;
+            opacity: 0; /* Initially invisible */
+            border-radius: 0 50% 50% 50%;
+            animation: fall 10s linear infinite;
         }
 
         @keyframes fall {
-            0% { transform: translateY(-100vh) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0; /* Invisible at the start */
+            }
+            10% {
+                opacity: 0.2; /* Fade in at the start of the fall */
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.2; /* Maintain visibility during fall */
+            }
         }
 
         h1 {
@@ -185,69 +208,67 @@
                 transform: translateY(0);
             }
         }
-        
-        
+
         .commitment-card h3 a {
-    text-decoration: none;
-    color: inherit; /* Default link color */
-    transition: color 0.3s ease;
-}
+            text-decoration: none;
+            color: inherit; /* Default link color */
+            transition: color 0.3s ease;
+        }
 
-.commitment-card h3 a:hover {
-    color: blue; /* Change link color to blue on hover */
-}
+        .commitment-card h3 a:hover {
+            color: blue; /* Change link color to blue on hover */
+        }
 
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.5rem 1rem;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space between name and nav items */
+        }
 
-       nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 0.5rem 1rem;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Space between name and nav items */
-}
+        nav .org-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2E7D32;
+            margin: 0;
+        }
 
-nav .org-name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #2E7D32;
-    margin: 0;
-}
+        nav .org-name a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
 
-nav .org-name a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease;
-}
+        nav .org-name a:hover {
+            color: #388E3C;
+        }
 
-nav .org-name a:hover {
-    color: #388E3C;
-}
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem; /* Add spacing between buttons */
+            margin: 0;
+            padding: 0;
+        }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem; /* Add spacing between buttons */
-    margin: 0;
-    padding: 0;
-}
+        nav a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 0.95rem; /* Adjust font size for links */
+        }
 
-nav a {
-    color: #2E7D32;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    font-size: 0.95rem; /* Adjust font size for links */
-}
-
-nav a:hover {
-    color: #4CAF50;
-}
+        nav a:hover {
+            color: #4CAF50;
+        }
 
         /* New footer styles */
         footer {
@@ -275,11 +296,12 @@ nav a:hover {
 </head>
 <body>
     <nav>
-    <div class="org-name"><a href="#">Bethlehem Climate Justice Education Project</a></div>
-    <ul>
-        
-    </ul>
-</nav>
+        <div class="org-name"><a href="#">Bethlehem Climate Justice Education Project</a></div>
+        <ul>
+            <!-- Add your nav items here if desired -->
+        </ul>
+    </nav>
+
     <section id="home" class="hero">
         <div class="leaf" style="left: 10%; animation-delay: 0s;"></div>
         <div class="leaf" style="left: 30%; animation-delay: 2s;"></div>
@@ -290,69 +312,73 @@ nav a:hover {
         <h1>Together for a Sustainable Future</h1>
         <p class="subtitle">Petition to the BASD School Board for Climate Change Education</p>
         
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScv_hWWHOcjM3fYaFEcrGFAlKHttUZ6KwEx_fXzYnPXtlpYxQ/viewform" class="cta-button" target="_blank">Sign the Petition</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScv_hWWHOcjM3fYaFEcrGFAlKHttUZ6KwEx_fXzYnPXtlpYxQ/viewform" class="cta-button" target="_blank">
+            Sign the Petition
+        </a>
+
+        <!-- Bouncing "Scroll" Arrow in the bottom center of hero -->
+        <div class="scroll-down-indicator" onclick="document.querySelector('#commitments').scrollIntoView({behavior: 'smooth'});">
+            <div class="arrow">&darr;</div>
+            <p>Scroll</p>
+        </div>
     </section>
 
     <section id="commitments">
-    <h2>The Six Commitments</h2>
-    <div class="commitments">
-        <div class="commitment-card">
-            <div class="commitment-number">1</div>
-            <h3>
-                <a href="https://docs.google.com" target="_blank">
-                    1. Immediate Teacher-Driven CCE
-                </a>
-            </h3>
-            <p>Support voluntary teacher-driven climate change adaptations starting in the 2024-25 school year.</p>
-        </div>
-        <div class="commitment-card">
-            <div class="commitment-number">2</div>
-            <h3>
-                <a href="https://docs.google.com" target="_blank">
-                    Publicly Commit to Rapid Planning & Implementation of CCE
-                </a>
-            </h3>
-            <p>Accelerate climate and sustainability education adoption for all levels and disciplines.</p>
-        </div>
-        <div class="commitment-card">
-            <div class="commitment-number">3</div>
-            <h3>
-                <a href="https://docs.google.com" target="_blank">
-                    Fulfill 2014 Commitment
-                </a>
-            </h3>
-            <p>Recommit to the district's 2014 climate and sustainability goals with updated urgency.</p>
-        </div>
-        <div class="commitment-card">
-            <div class="commitment-number">4</div>
-            <h3>
-                <a href="https://docs.google.com" target="_blank">
-                    Restart Sustainability Committee
-                </a>
-            </h3>
-            <p>Empower a committee to oversee and assist climate education efforts with regular updates.</p>
-        </div>
-        <div class="commitment-card">
-            <div class="commitment-number">5</div>
-            <h3>
-                <a href="https://docs.google.com" target="_blank">
-                    Environmental Science Option
-                </a>
-            </h3>
-            <p>Add Environmental Science as a mandatory or prominent alternative to Chemistry/Physics.</p>
-        </div>
-        <div class="commitment-card">
-            <div class="commitment-number">6</div>
-            <h3>
-                <a href="https://docs.google.com" target="_blank">
-                    Fund Leadership Roles
-                </a>
-            </h3>
-            <p>Hire leadership staff and consultants to guide and oversee implementation.</p>
-        </div>
-    </div>
-</section>
-
+        <h2>The Six Commitments</h2>
+        <div class="commitments">
+            <div class="commitment-card">
+                <div class="commitment-number">1</div>
+                <h3>
+                    <a href="https://docs.google.com" target="_blank">
+                        1. Immediate Teacher-Driven CCE
+                    </a>
+                </h3>
+                <p>Support voluntary teacher-driven climate change adaptations starting in the 2024-25 school year.</p>
+            </div>
+            <div class="commitment-card">
+                <div class="commitment-number">2</div>
+                <h3>
+                    <a href="https://docs.google.com" target="_blank">
+                        Publicly Commit to Rapid Planning & Implementation of CCE
+                    </a>
+                </h3>
+                <p>Accelerate climate and sustainability education adoption for all levels and disciplines.</p>
+            </div>
+            <div class="commitment-card">
+                <div class="commitment-number">3</div>
+                <h3>
+                    <a href="https://docs.google.com" target="_blank">
+                        Fulfill 2014 Commitment
+                    </a>
+                </h3>
+                <p>Recommit to the district's 2014 climate and sustainability goals with updated urgency.</p>
+            </div>
+            <div class="commitment-card">
+                <div class="commitment-number">4</div>
+                <h3>
+                    <a href="https://docs.google.com" target="_blank">
+                        Restart Sustainability Committee
+                    </a>
+                </h3>
+                <p>Empower a committee to oversee and assist climate education efforts with regular updates.</p>
+            </div>
+            <div class="commitment-card">
+                <div class="commitment-number">5</div>
+                <h3>
+                    <a href="https://docs.google.com" target="_blank">
+                        Environmental Science Option
+                    </a>
+                </h3>
+                <p>Add Environmental Science as a mandatory or prominent alternative to Chemistry/Physics.</p>
+            </div>
+            <div class="commitment-card">
+                <div class="commitment-number">6</div>
+                <h3>
+                    <a href="https://docs.google.com" target="_blank">
+                        Fund Leadership Roles
+                    </a>
+                </h3>
+                <p>Hire leadership staff and consultants to guide and oversee implementation.</p>
             </div>
         </div>
     </section>
@@ -371,7 +397,9 @@ nav a:hover {
         <div style="text-align: center;">
             <h3>Want to Read the Full Petition?</h3>
             <p>If you'd like to read the full petition in detail, please click the button below.</p>
-            <a  href="https://docs.google.com/document/d/1yjYRGRC5X90Y9_QP29Fp_K1b_WjcQiNvKdPxSDzZfU0/edit?tab=t.0" class="cta-button" target="_blank"> Read the Full Petition</a>
+            <a href="https://docs.google.com/document/d/1yjYRGRC5X90Y9_QP29Fp_K1b_WjcQiNvKdPxSDzZfU0/edit?tab=t.0" class="cta-button" target="_blank">
+                Read the Full Petition
+            </a>
         </div>
     </section>
 
@@ -398,9 +426,7 @@ nav a:hover {
 
     <footer>
         © 2024 Bethlehem Climate Justice Education Project | All Rights Reserved
-	    
-  
-
     </footer>
 </body>
 </html>
+
