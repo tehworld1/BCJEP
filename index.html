@@ -279,6 +279,7 @@
             margin-top: 2rem;
         }
 
+         /* --- Existing Mobile Media Query --- */
         @media (max-width: 600px) {
             nav ul {
                 gap: 1rem;
@@ -291,7 +292,19 @@
             .subtitle {
                 font-size: 1.2rem;
             }
+
+            /* 1) Make hero section taller on mobile */
+            .hero {
+                min-height: 110vh; /* Or 120vh if you need more room */
+            }
+
+            /* 2) Raise the arrow indicator higher on mobile */
+            .scroll-down-indicator {
+                bottom: 70px; /* Adjust if still too low */
+            }
         }
+
+      
     </style>
 </head>
 <body>
