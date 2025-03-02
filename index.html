@@ -1,843 +1,471 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <link rel="icon" type="image/x-icon" href="icon.png">
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="Advocating for Climate Justice Education in the BASD">
-
     <meta name="msvalidate.01" content="77934870394C332D36D493E7C5C983A1" />
-
     <title>BCJEP - Bethlehem Climate Justice Education Project | Climate Justice Education</title>
-
     <style>
-
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
-
             font-family: system-ui, sans-serif;
-
-            scroll-behavior: smooth; /* Add smooth scrolling */
-
+            scroll-behavior: smooth;
         }
-
+        
         body {
-
             background: #f0f9f0;
-
             color: #333;
-
             line-height: 1.6;
-            
-            /* Increased padding to prevent overlap with fixed nav */
-            padding-top: 70px; 
-
+            padding-top: 60px;
         }
-
+        
         section {
-
             padding: 4rem 2rem;
-
             max-width: 1200px;
-
             margin: 0 auto;
-
-            scroll-margin-top: 70px; /* Offset for fixed header */
-
+            scroll-margin-top: 70px;
         }
-
+        
         .hero {
-
             min-height: 100vh;
-
             padding: 2rem;
-
             display: flex;
-
             flex-direction: column;
-
             align-items: center;
-
             justify-content: center;
-
             text-align: center;
-
             position: relative;
-
             overflow: hidden;
-
             background: #f0f9f0;
-
             background-size: cover;
-
             background-position: center;
-
         }
-
-        /* Modified scroll indicator to appear higher */
+        
+        /* Bouncing scroll indicator */
         .scroll-down-indicator {
-
             position: absolute;
-
-            /* Moved higher from the bottom */
-            bottom: 100px; 
-
+            bottom: 40px;
             left: 50%;
-
             transform: translateX(-50%);
-
             text-align: center;
-
             cursor: pointer;
-
             color: #2E7D32;
-
             font-weight: bold;
-            
-            /* Added z-index to ensure it appears above other elements */
             z-index: 5;
-
         }
-
+        
         .scroll-down-indicator .arrow {
-
-            font-size: 2.5rem; /* Increased size for better visibility */
-
-            animation: bounce 2s infinite;
-
-        }
-
-        .scroll-down-indicator p {
-
-            margin-top: 0.25rem;
-
-            font-size: 1.1rem; /* Slightly larger for better visibility */
-            
-            /* Added slight shadow to improve readability on any background */
-            text-shadow: 0 0 3px rgba(255,255,255,0.5);
-
-        }
-
-        @keyframes bounce {
-
-            0%, 100% {
-
-                transform: translateY(0);
-
-            }
-
-            50% {
-
-                transform: translateY(10px);
-
-            }
-
-        }
-
-        .leaf {
-
-            position: absolute;
-
-            width: 50px;
-
-            height: 50px;
-
-            background: #4CAF50;
-
-            opacity: 0; /* Initially invisible */
-
-            border-radius: 0 50% 50% 50%;
-
-            animation: fall 10s linear infinite;
-
-        }
-
-        @keyframes fall {
-
-            0% {
-
-                transform: translateY(-100vh) rotate(0deg);
-
-                opacity: 0; /* Invisible at the start */
-
-            }
-
-            10% {
-
-                opacity: 0.2; /* Fade in at the start of the fall */
-
-            }
-
-            100% {
-
-                transform: translateY(100vh) rotate(360deg);
-
-                opacity: 0.2; /* Maintain visibility during fall */
-
-            }
-
-        }
-
-        h1 {
-
-            font-size: 3.5rem;
-
-            margin-bottom: 1rem;
-
-            color: #2E7D32;
-
-            animation: fadeIn 1s ease-out;
-
-        }
-
-        h2 {
-
-            font-size: 2.5rem;
-
-            margin-bottom: 2rem;
-
-            color: #2E7D32;
-
-            text-align: center;
-
-        }
-
-        h3 {
-
-            font-size: 1.8rem;
-
-            margin-bottom: 1rem;
-
-            color: #388E3C;
-
-        }
-
-        .subtitle {
-
-            font-size: 1.5rem;
-
-            margin-bottom: 2rem;
-
-            color: #388E3C;
-
-            animation: slideUp 1s ease-out;
-
-        }
-
-        .commitments {
-
-            display: grid;
-
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-            gap: 2rem;
-
-            margin: 2rem 0;
-
-        }
-
-        .commitment-card {
-
-            background: white;
-
-            padding: 2rem;
-
-            border-radius: 1rem;
-
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-            transition: transform 0.3s ease;
-
-        }
-
-        .commitment-card:hover {
-
-            transform: translateY(-5px);
-
-        }
-
-        .commitment-number {
-
             font-size: 2rem;
-
-            color: #4CAF50;
-
-            margin-bottom: 1rem;
-
+            animation: bounce 2s infinite;
         }
-
-        .why-matters {
-
-            background: #E8F5E9;
-
-            border-radius: 1rem;
-
-            padding: 2rem;
-
-            margin: 2rem 0;
-
+        
+        .scroll-down-indicator p {
+            margin-top: 0.25rem;
+            font-size: 1rem;
         }
-
-        .why-matters ul {
-
-            list-style-position: inside;
-
-            margin: 1rem 0;
-
-        }
-
-        .why-matters li {
-
-            margin: 1rem 0;
-
-            padding-left: 1rem;
-
-        }
-
-        .cta-button {
-
-            display: inline-block;
-
-            padding: 1rem 2rem;
-
-            background: #4CAF50;
-
-            color: white;
-
-            text-decoration: none;
-
-            border-radius: 2rem;
-
-            font-weight: bold;
-
-            transition: all 0.3s ease;
-
-            margin: 1rem;
-
-        }
-
-        .cta-button:hover {
-
-            background: #388E3C;
-
-            transform: scale(1.05);
-
-        }
-
-        .coming-soon {
-
-            text-align: center;
-
-            padding: 4rem;
-
-            background: #E8F5E9;
-
-            border-radius: 1rem;
-
-            margin: 2rem 0;
-
-        }
-
-        @keyframes fadeIn {
-
-            from { opacity: 0; }
-
-            to { opacity: 1; }
-
-        }
-
-        @keyframes slideUp {
-
-            from { 
-
-                opacity: 0;
-
-                transform: translateY(20px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
+        
+        @keyframes bounce {
+            0%, 100% {
                 transform: translateY(0);
-
             }
-
+            50% {
+                transform: translateY(10px);
+            }
         }
-
-        .commitment-card h3 a {
-
-            text-decoration: none;
-
-            color: inherit; /* Default link color */
-
-            transition: color 0.3s ease;
-
+        
+        .leaf {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #4CAF50;
+            opacity: 0;
+            border-radius: 0 50% 50% 50%;
+            animation: fall 10s linear infinite;
         }
-
-        .commitment-card h3 a:hover {
-
-            color: blue; /* Change link color to blue on hover */
-
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.2;
+            }
         }
-
-        nav {
-
-            position: fixed;
-
-            top: 0;
-
-            width: 100%;
-
-            background: rgba(255, 255, 255, 0.95);
-
-            padding: 0.5rem 1rem;
-
-            z-index: 1000;
-
-            backdrop-filter: blur(5px);
-
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between; /* Space between name and nav items */
-
-        }
-
-        nav .org-name {
-
-            font-size: 1.2rem;
-
-            font-weight: bold;
-
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
             color: #2E7D32;
-
-            margin: 0;
-
+            animation: fadeIn 1s ease-out;
         }
-
-        nav .org-name a {
-
-            text-decoration: none;
-
-            color: inherit;
-
-            transition: color 0.3s ease;
-
-        }
-
-        nav .org-name a:hover {
-
-            color: #388E3C;
-
-        }
-
-        nav ul {
-
-            display: flex;
-
-            list-style: none;
-
-            gap: 1.5rem; /* Add spacing between buttons */
-
-            margin: 0;
-
-            padding: 0;
-
-        }
-
-        nav a {
-
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: #2E7D32;
-
-            text-decoration: none;
-
-            font-weight: bold;
-
-            transition: color 0.3s ease;
-
-            font-size: 0.95rem; /* Adjust font size for links */
-
-        }
-
-        nav a:hover {
-
-            color: #4CAF50;
-
-        }
-
-        /* New footer styles */
-
-        footer {
-
-            background: #2E7D32;
-
-            color: white;
-
             text-align: center;
-
-            padding: 1.5rem;
-
-            margin-top: 2rem;
-
         }
-
-         /* --- Updated Mobile Media Query --- */
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 0.75rem;
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #388E3C;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #388E3C;
+            animation: slideUp 1s ease-out;
+        }
+        
+        .commitments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .commitment-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .commitment-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .commitment-number {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        
+        .why-matters {
+            background: #E8F5E9;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .why-matters ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
+        
+        .why-matters li {
+            margin: 1rem 0;
+            padding-left: 1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 1rem;
+        }
+        
+        .cta-button:hover {
+            background: #388E3C;
+            transform: scale(1.05);
+        }
+        
+        .coming-soon {
+            text-align: center;
+            padding: 4rem;
+            background: #E8F5E9;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .commitment-card h3 a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        .commitment-card h3 a:hover {
+            color: blue;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.5rem 1rem;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        nav .org-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2E7D32;
+            margin: 0;
+        }
+        
+        nav .org-name a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        nav .org-name a:hover {
+            color: #388E3C;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        nav a:hover {
+            color: #4CAF50;
+        }
+        
+        footer {
+            background: #2E7D32;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 1rem;
             }
             
             nav .org-name {
                 font-size: 1rem;
-                max-width: 80%; /* Prevent text from wrapping awkwardly */
+                max-width: 80%;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
-
-            nav ul {
-                gap: 0.75rem;
-            }
-            
-            body {
-                padding-top: 60px; /* Adjust for smaller nav on mobile */
-            }
-            
-            section {
-                padding: 3rem 1.25rem;
-            }
             
             h1 {
-                font-size: 2.25rem;
+                font-size: 2.5rem;
+                margin-top: 0;
             }
             
             .subtitle {
-                font-size: 1.1rem;
-            }
-
-            /* Make hero section taller and add padding */
-            .hero {
-                min-height: 110vh;
-                padding-bottom: 150px; /* Add extra padding at bottom for scroll indicator */
-            }
-
-            /* Move the arrow indicator much higher on mobile */
-            .scroll-down-indicator {
-                bottom: 150px; /* Significantly higher position */
-                background-color: rgba(240, 249, 240, 0.7); /* Semi-transparent background */
-                padding: 8px 12px;
-                border-radius: 20px;
-            }
-            
-            /* Ensure the arrow is very visible */
-            .scroll-down-indicator .arrow {
-                font-size: 2.8rem;
-            }
-            
-            .scroll-down-indicator p {
                 font-size: 1.2rem;
-                font-weight: bold;
+                margin-bottom: 1.5rem;
             }
             
-            /* Adjust commitments layout */
-            .commitments {
-                grid-template-columns: 1fr;
+            /* Compact hero section */
+            .hero {
+                min-height: 90vh;
+                padding-top: 0;
+                justify-content: center;
             }
             
+            /* Position the arrow at a fixed distance below the CTA button */
+            .scroll-down-indicator {
+                position: relative;
+                bottom: auto;
+                margin-top: 2.5rem;
+                left: auto;
+                transform: none;
+                width: 100%;
+            }
+            
+            /* Make commitment cards more compact */
             .commitment-card {
                 padding: 1.5rem;
             }
-        }
-
-        /* Extra small devices */
-        @media (max-width: 480px) {
-            nav .org-name {
-                font-size: 0.9rem;
-            }
             
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .hero {
-                padding: 1.5rem;
-            }
-            
-            /* Further adjust the scroll indicator for very small screens */
-            .scroll-down-indicator {
-                bottom: 180px;
+            section {
+                padding: 3rem 1.5rem;
             }
         }
-
     </style>
-
 </head>
-
 <body>
-
     <nav>
-
         <div class="org-name"><a href="#">Bethlehem Climate Justice Education Project</a></div>
-
         <ul>
-
             <!-- Add your nav items here if desired -->
-
         </ul>
-
     </nav>
 
     <section id="home" class="hero">
-
         <div class="leaf" style="left: 10%; animation-delay: 0s;"></div>
-
         <div class="leaf" style="left: 30%; animation-delay: 2s;"></div>
-
         <div class="leaf" style="left: 50%; animation-delay: 4s;"></div>
-
         <div class="leaf" style="left: 70%; animation-delay: 6s;"></div>
-
         <div class="leaf" style="left: 90%; animation-delay: 8s;"></div>
 
         <h1>Together for a Sustainable Future</h1>
-
         <p class="subtitle">Petition to the BASD School Board for Climate Change Education</p>
-
         
-
         <a href="https://tally.so/r/3NRrol" class="cta-button" target="_blank">
-
             Sign the Petition
-
         </a>
 
-        <!-- Bouncing "Scroll" Arrow in the bottom center of hero -->
-
+        <!-- Changed from absolute to relative positioning in mobile -->
         <div class="scroll-down-indicator" onclick="document.querySelector('#commitments').scrollIntoView({behavior: 'smooth'});">
-
             <div class="arrow">&darr;</div>
-
             <p>Scroll</p>
-
         </div>
-
     </section>
 
     <section id="commitments">
-
         <h2>The Six Commitments</h2>
-
         <div class="commitments">
-
             <div class="commitment-card">
-
                 <div class="commitment-number">1</div>
-
                 <h3>
-
                     <a href="https://docs.google.com" target="_blank">
-
                         Immediate Teacher-Driven CCE
-
                     </a>
-
                 </h3>
-
                 <p>Support voluntary teacher-driven climate change adaptations starting in the 2024-25 school year.</p>
-
             </div>
-
             <div class="commitment-card">
-
                 <div class="commitment-number">2</div>
-
                 <h3>
-
                     <a href="https://docs.google.com" target="_blank">
-
                         Publicly Commit to Rapid Planning & Implementation of CCE
-
                     </a>
-
                 </h3>
-
                 <p>Accelerate climate and sustainability education adoption for all levels and disciplines.</p>
-
             </div>
-
             <div class="commitment-card">
-
                 <div class="commitment-number">3</div>
-
                 <h3>
-
                     <a href="https://docs.google.com" target="_blank">
-
                         Fulfill 2014 Commitment
-
                     </a>
-
                 </h3>
-
                 <p>Recommit to the district's 2014 climate and sustainability goals with updated urgency.</p>
-
             </div>
-
             <div class="commitment-card">
-
                 <div class="commitment-number">4</div>
-
                 <h3>
-
                     <a href="https://docs.google.com" target="_blank">
-
                         Restart Sustainability Committee
-
                     </a>
-
                 </h3>
-
                 <p>Empower a committee to oversee and assist climate education efforts with regular updates.</p>
-
             </div>
-
             <div class="commitment-card">
-
                 <div class="commitment-number">5</div>
-
                 <h3>
-
                     <a href="https://docs.google.com" target="_blank">
-
                         Environmental Science Option
-
                     </a>
-
                 </h3>
-
                 <p>Add Environmental Science as a mandatory or prominent alternative to Chemistry/Physics.</p>
-
             </div>
-
             <div class="commitment-card">
-
                 <div class="commitment-number">6</div>
-
                 <h3>
-
                     <a href="https://docs.google.com" target="_blank">
-
                         Fund Leadership Roles
-
                     </a>
-
                 </h3>
-
                 <p>Hire leadership staff and consultants to guide and oversee implementation.</p>
-
             </div>
-
         </div>
-
     </section>
 
     <section id="why">
-
         <h2>Why This Matters</h2>
-
         <div class="why-matters">
-
             <ul>
-
                 <li>Due to the existential climate crisis and urgency to meet IPCC targets.</li>
-
                 <li>To address the unequal impacts on marginalized communities.</li>
-
                 <li>Education is key to combating climate change and empowering future leaders.</li>
-
                 <li>Pennsylvania lags behind in climate education standards.</li>
-
                 <li>No current BASD requirements for climate education exist.</li>
-
             </ul>
-
         </div>
-
         <div style="text-align: center;">
-
             <h3>Want to Read the Full Petition?</h3>
-
             <p>If you'd like to read the full petition in detail, please click the button below.</p>
-
             <a href="https://docs.google.com/document/d/1yjYRGRC5X90Y9_QP29Fp_K1b_WjcQiNvKdPxSDzZfU0/edit?tab=t.0" class="cta-button" target="_blank">
-
                 Read the Full Petition
-
             </a>
-
         </div>
-
     </section>
 
     <section id="updates">
-
         <h2>Updates on Our Progress</h2>
-
         <div class="coming-soon">
-
             <h3>Content coming soon!</h3>
-
         </div>
-
     </section>
 
     <section id="events">
-
         <h2>Events & Campaigns</h2>
-
         <div class="coming-soon">
-
             <h3>Content coming soon!</h3>
-
         </div>
-
     </section>
 
     <section id="team">
-
         <h2>Meet the Team</h2>
-
         <div class="coming-soon">
-
             <h3>Content coming soon!</h3>
-
         </div>
-
     </section>
 
     <footer>
-
         © 2024 Bethlehem Climate Justice Education Project | All Rights Reserved
-
     </footer>
-
 </body>
+</html>
 
 </html>
