@@ -330,6 +330,76 @@
                 padding: 3rem 1.5rem;
             }
         }
+
+
+<!-- Add this right before the closing </body> tag -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the Intersection Observer with earlier trigger point
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If the element is in view
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when just 10% of element is visible (was 15%)
+            rootMargin: '0px 0px -30px 0px' // Trigger slightly earlier
+        });
+        
+        // Target all section headings for consistent fade-in
+        document.querySelectorAll('section h2').forEach(el => {
+            el.classList.add('animate', 'fade-in');
+            observer.observe(el);
+        });
+        
+        // Simple fade-in for all paragraphs
+        document.querySelectorAll('section p').forEach(el => {
+            el.classList.add('animate', 'fade-in');
+            observer.observe(el);
+        });
+        
+        // Gentle scale effect for buttons
+        document.querySelectorAll('.cta-button').forEach(el => {
+            el.classList.add('animate', 'scale-in');
+            observer.observe(el);
+        });
+        
+        // Subtle fade-in with slight slide for commitment cards
+        document.querySelectorAll('.commitment-card').forEach((el, index) => {
+            el.classList.add('animate', 'slide-up', `delay-${Math.min(index+1, 6)}`);
+            observer.observe(el);
+        });
+        
+        // Consistent fade-in for Why This Matters section items
+        document.querySelectorAll('.why-matters li').forEach((el, index) => {
+            el.classList.add('animate', 'fade-in', `delay-${index % 3 + 1}`);
+            observer.observe(el);
+        });
+        
+        // Gentle fade-in for coming-soon sections
+        document.querySelectorAll('.coming-soon').forEach(el => {
+            el.classList.add('animate', 'fade-in');
+            observer.observe(el);
+        });
+        
+        // Simple fade for contact container
+        if (document.querySelector('.contact-container')) {
+            document.querySelector('.contact-container').classList.add('animate', 'fade-in');
+            observer.observe(document.querySelector('.contact-container'));
+        }
+        
+        // Subtle scale for email link
+        const emailLink = document.querySelector('.contact-container a');
+        if (emailLink) {
+            emailLink.classList.add('animate', 'scale-in', 'delay-1');
+            observer.observe(emailLink);
+        }
+    });
+</script>
+
+        
     </style>
 </head>
 <body>
