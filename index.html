@@ -45,7 +45,7 @@
             background-position: center;
         }
         
-        /* Bouncing scroll indicator */
+        /* Bouncing scroll indicator with dedicated animation */
         .scroll-down-indicator {
             position: absolute;
             bottom: 70px;
@@ -56,6 +56,8 @@
             color: #2E7D32;
             font-weight: bold;
             z-index: 5;
+            /* Special animation just for the scroll indicator */
+            opacity: 1; /* Start visible by default */
         }
         
         .scroll-down-indicator .arrow {
@@ -280,6 +282,56 @@
             margin-top: 2rem;
         }
         
+        /* Animation base classes */
+        .animate {
+            opacity: 0;
+            transition: all 1.0s ease-out;
+        }
+        
+        .fade-in {
+            opacity: 0;
+        }
+        
+        .slide-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.80);
+        }
+        
+        /* Animated state */
+        .animated {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+        
+        /* Delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.6s; }
+        .delay-6 { transition-delay: 0.7s; }
+        
+        /* Contact container styles */
+        .contact-container {
+            text-align: center; 
+            padding: 2rem; 
+            background: #E8F5E9; 
+            border-radius: 1rem; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            margin: 2rem 0;
+        }
+        
+        .footer-subline {
+            margin-top: 0.75rem; 
+            font-size: 0.9rem; 
+            opacity: 0.9;
+        }
+        
         /* Mobile optimizations */
         @media (max-width: 600px) {
             nav ul {
@@ -330,198 +382,9 @@
                 padding: 3rem 1.5rem;
             }
         }
-     <!-- Add this before the closing </head> tag -->
-<style>
-    /* Animation base classes with slower duration (1.5s instead of 0.8s) */
-    .animate {
-        opacity: 0;
-        transition: all 1.5s ease-out; /* Slowed down from 0.8s to 1.5s */
-    }
-    
-    /* Animation types */
-    .fade-in {
-        opacity: 0;
-    }
-    
-    /* Gentler slide up with less distance */
-    .slide-up {
-        opacity: 0;
-        transform: translateY(30px); /* Reduced from 50px for subtlety */
-    }
-    
-    /* Gentler scale effect */
-    .scale-in {
-        opacity: 0;
-        transform: scale(0.95); /* Less dramatic scale (was 0.8) */
-    }
-    
-    /* Animated state (will be added by JavaScript) */
-    .animated {
-        opacity: 1;
-        transform: translate(0) scale(1);
-    }
-    
-    /* Longer stagger delays between elements */
-    .delay-1 { transition-delay: 0.1s; } /* Increased from 0.1s */
-    .delay-2 { transition-delay: 0.2s; } /* Increased from 0.2s */
-    .delay-3 { transition-delay: 0.3s; } /* Increased from 0.3s */
-    .delay-4 { transition-delay: 0.4s; } /* Increased from 0.4s */
-    .delay-5 { transition-delay: 0.55s; } /* Increased from 0.5s */
-    .delay-6 { transition-delay: 0.65s; } /* Increased from 0.6s */
-</style>
-
-<!-- Add this before the closing </head> tag -->
-<style>
-    /* Animation base classes with slower duration (1.5s instead of 0.8s) */
-    .animate {
-        opacity: 0;
-        transition: all 1.0s ease-out; /* Slowed down from 0.8s to 1.5s */
-    }
-    
-    /* Animation types */
-    .fade-in {
-        opacity: 0;
-    }
-    
-    /* Gentler slide up with less distance */
-    .slide-up {
-        opacity: 0;
-        transform: translateY(30px); /* Reduced from 50px for subtlety */
-    }
-    
-    /* Gentler scale effect */
-    .scale-in {
-        opacity: 0;
-        transform: scale(0.8); /* Less dramatic scale (was 0.8) */
-    }
-    
-    /* Animated state (will be added by JavaScript) */
-    .animated {
-        opacity: 1;
-        transform: translate(0) scale(1);
-    }
-    
-    /* Longer stagger delays between elements */
-    .delay-1 { transition-delay: 0.1s; } /* Increased from 0.1s */
-    .delay-2 { transition-delay: 0.2s; } /* Increased from 0.2s */
-    .delay-3 { transition-delay: 0.3s; } /* Increased from 0.3s */
-    .delay-4 { transition-delay: 0.4s; } /* Increased from 0.4s */
-    .delay-5 { transition-delay: 0.6s; } /* Increased from 0.5s */
-    .delay-6 { transition-delay: 0.7s; } /* Increased from 0.6s */
-</style>
-
-<!-- Add this right before the closing </body> tag -->
-<!-- Add this before the closing </head> tag -->
-<style>
-    /* Animation base classes */
-    .animate {
-        opacity: 0;
-        transition: all 1.0s ease-out;
-    }
-    
-    .fade-in {
-        opacity: 0;
-    }
-    
-    .slide-up {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    
-    .scale-in {
-        opacity: 0;
-        transform: scale(0.80);
-    }
-    
-    /* Animated state */
-    .animated {
-        opacity: 1;
-        transform: translate(0) scale(1);
-    }
-    
-    /* Delays */
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
-    .delay-5 { transition-delay: 0.6s; }
-    .delay-6 { transition-delay: 0.7s; }
-</style>
-
-<!-- Add this right before the closing </body> tag -->
-<script>
-    // Make sure the script runs after page load
-    window.addEventListener('load', function() {
-    // Make sure the scroll indicator is immediately visible after its animation
-    setTimeout(() => {
-        document.querySelector('.scroll-down-indicator').classList.add('animated');
-    }, 1100);
-    
-    // First apply animation classes to other elements
-    document.querySelectorAll('section h2').forEach(el => {
-        el.classList.add('animate', 'fade-in');
-    });
-    
-    // ... rest of your code
-
-            
-            document.querySelectorAll('section p').forEach(el => {
-                el.classList.add('animate', 'fade-in');
-            });
-            
-            document.querySelectorAll('.cta-button').forEach(el => {
-                el.classList.add('animate', 'scale-in');
-            });
-            
-            document.querySelectorAll('.commitment-card').forEach((el, index) => {
-                el.classList.add('animate', 'slide-up', `delay-${Math.min(index+1, 6)}`);
-            });
-            
-            document.querySelectorAll('.why-matters li').forEach((el, index) => {
-                el.classList.add('animate', 'fade-in', `delay-${index % 3 + 1}`);
-            });
-            
-            document.querySelectorAll('.coming-soon').forEach(el => {
-                el.classList.add('animate', 'fade-in');
-            });
-            
-            // Now set up the observer
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -30px 0px'
-            });
-            
-            // Observe all animate elements
-            document.querySelectorAll('.animate').forEach(el => {
-                observer.observe(el);
-            });
-            
-            console.log('Scroll animations initialized');
-        } else {
-            // Fallback for browsers without IntersectionObserver
-            console.log('IntersectionObserver not supported, applying animations immediately');
-            document.querySelectorAll('.animate').forEach(el => {
-                // Short delay to ensure transitions work
-                setTimeout(function() {
-                    el.classList.add('animated');
-                }, 100);
-            });
-        }
-    });
-</script>
-
-
-
-
-
     </style>
 </head>
+
 <body>
     <nav>
         <div class="org-name"><a href="#">Bethlehem Climate Justice Education Project</a></div>
@@ -536,15 +399,13 @@
         <div class="leaf" style="left: 50%; animation-delay: 4s;"></div>
         <div class="leaf" style="left: 70%; animation-delay: 6s;"></div>
         <div class="leaf" style="left: 90%; animation-delay: 8s;"></div>
-
         <h1>Let's make the Change for a Sustainable Future</h1>
         <p class="subtitle">Petition to the BASD School Board for Climate Change Education (CCE)</p>
         
         <a href="https://tally.so/r/3NRrol" class="cta-button" target="_blank">
             Sign the Petition
         </a>
-
-        <!-- Changed from absolute to relative positioning in mobile -->
+        <!-- The scroll indicator is now properly positioned -->
         <div class="scroll-down-indicator" onclick="document.querySelector('#commitments').scrollIntoView({behavior: 'smooth'});">
             <div class="arrow">&darr;</div>
             <p>Scroll</p>
@@ -653,26 +514,88 @@
     </section>
     
     <section id="contact">
-    <h2>Want to contact us?</h2>
-    <div class="contact-container" style="text-align: center; padding: 2rem; background: #E8F5E9; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin: 2rem 0;">
-        <p style="font-size: 1.2rem; margin-bottom: 1rem;">Reach out to us via email:</p>
-        <a href="mailto:gzahm@bcjep.org" style="color: #0066cc; font-size: 1.5rem; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
-            gzahm@bcjep.org
-        </a>
-        <p style="margin-top: 1.5rem; ">We look forward to hearing from you!</p>
-    </div>
-</section>
-
+        <h2>Want to contact us?</h2>
+        <div class="contact-container">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Reach out to us via email:</p>
+            <a href="mailto:gzahm@bcjep.org" style="color: #0066cc; font-size: 1.5rem; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
+                gzahm@bcjep.org
+            </a>
+            <p style="margin-top: 1.5rem;">We look forward to hearing from you!</p>
+        </div>
+    </section>
      
-
     <footer>
-    © 2025 Bethlehem Climate Justice Education Project | All Rights Reserved
-    <div class="footer-subline" style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.9;">
-        Made with ♥️ by Patrick at Liberty High School.
-    </div>
-</footer>
+        © 2025 Bethlehem Climate Justice Education Project | All Rights Reserved
+        <div class="footer-subline">
+            Made with ♥️ by Patrick at Liberty High School.
+        </div>
+    </footer>
 
-</body>
-</html>
+    <!-- Properly placed script with fixed conditional statement -->
+    <script>
+        // Make sure the script runs after page load
+        window.addEventListener('load', function() {
+            // Skip applying animation classes to the scroll indicator elements
+            const scrollIndicator = document.querySelector('.scroll-down-indicator');
+            
+            // Apply animation classes to elements
+            document.querySelectorAll('section h2').forEach(el => {
+                el.classList.add('animate', 'fade-in');
+            });
+            
+            document.querySelectorAll('section p').forEach(el => {
+                // Skip applying animation to scroll indicator text
+                if (!el.closest('.scroll-down-indicator')) {
+                    el.classList.add('animate', 'fade-in');
+                }
+            });
+            
+            document.querySelectorAll('.cta-button').forEach(el => {
+                el.classList.add('animate', 'scale-in');
+            });
+            
+            document.querySelectorAll('.commitment-card').forEach((el, index) => {
+                el.classList.add('animate', 'slide-up', `delay-${Math.min(index+1, 6)}`);
+            });
+            
+            document.querySelectorAll('.why-matters li').forEach((el, index) => {
+                el.classList.add('animate', 'fade-in', `delay-${index % 3 + 1}`);
+            });
+            
+            document.querySelectorAll('.coming-soon').forEach(el => {
+                el.classList.add('animate', 'fade-in');
+            });
+            
+            // Now set up the observer
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animated');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -30px 0px'
+                });
+                
+                // Observe all animate elements
+                document.querySelectorAll('.animate').forEach(el => {
+                    observer.observe(el);
+                });
+                
+                console.log('Scroll animations initialized');
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                console.log('IntersectionObserver not supported, applying animations immediately');
+                document.querySelectorAll('.animate').forEach(el => {
+                    // Short delay to ensure transitions work
+                    setTimeout(function() {
+                        el.classList.add('animated');
+                    }, 100);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
