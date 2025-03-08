@@ -158,48 +158,69 @@
     <!-- INTERSECTION OBSERVER SCRIPT -->
     <script>
         window.addEventListener('load', function() {
-            if ('IntersectionObserver' in window) {
-                document.querySelectorAll('section h2').forEach(el => {
-                    el.classList.add('animate', 'fade-in');
-                });
-                document.querySelectorAll('section p').forEach(el => {
-                    el.classList.add('animate', 'fade-in');
-                });
-                document.querySelectorAll('.cta-button').forEach(el => {
-                    el.classList.add('animate', 'scale-in');
-                });
-                document.querySelectorAll('.commitment-card').forEach((el, index) => {
-                    el.classList.add('animate', 'slide-up', `delay-${Math.min(index + 1, 6)}`);
-                });
-                document.querySelectorAll('.why-matters li').forEach((el, index) => {
-                    el.classList.add('animate', 'fade-in', `delay-${index % 3 + 1}`);
-                });
-                document.querySelectorAll('.coming-soon').forEach(el => {
-                    el.classList.add('animate', 'fade-in');
-                });
-
-                const observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animated');
-                        }
-                    });
-                }, {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -30px 0px'
-                });
-
-                document.querySelectorAll('.animate').forEach(el => {
-                    observer.observe(el);
-                });
-            } else {
-                document.querySelectorAll('.animate').forEach(el => {
-                    setTimeout(function() {
-                        el.classList.add('animated');
-                    }, 100);
-                });
-            }
+    // First apply animation classes
+    document.querySelectorAll('section h2').forEach(el => {
+        el.classList.add('animate', 'fade-in');
+    });
+    
+    document.querySelectorAll('section p').forEach(el => {
+        el.classList.add('animate', 'fade-in');
+    });
+    
+    document.querySelectorAll('.cta-button').forEach(el => {
+        el.classList.add('animate', 'scale-in');
+    });
+    
+    document.querySelectorAll('.commitment-card').forEach((el, index) => {
+        el.classList.add('animate', 'slide-up', `delay-${Math.min(index+1, 6)}`);
+    });
+    
+    document.querySelectorAll('.why-matters li').forEach((el, index) => {
+        el.classList.add('animate', 'fade-in', `delay-${index % 3 + 1}`);
+    });
+    
+    document.querySelectorAll('.coming-soon').forEach(el => {
+        el.classList.add('animate', 'fade-in');
+    });
+    
+    // Add the ensure-visible class to all animate elements as a backup
+    document.querySelectorAll('.animate').forEach(el => {
+        el.classList.add('ensure-visible');
+    });
+    
+    // Set up the observer
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
         });
+        
+        // Observe all animate elements
+        document.querySelectorAll('.animate').forEach(el => {
+            observer.observe(el);
+        });
+    } else {
+        // Fallback for browsers without IntersectionObserver
+        document.querySelectorAll('.animate').forEach(el => {
+            // Force visibility immediately
+            el.classList.add('animated');
+        });
+    }
+    
+    // Safety net - force everything visible after 2.5 seconds regardless
+    setTimeout(function() {
+        document.querySelectorAll('.animate:not(.animated)').forEach(el => {
+            el.classList.add('animated');
+        });
+    }, 2500);
+});
+
     </script>
 </body>
 </html>
