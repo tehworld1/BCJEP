@@ -1,0 +1,10 @@
+@media (max-width: 600px) {
+    .scroll-down-indicator {
+        position: relative;       /* Removes absolute positioning in mobile */
+        bottom: auto;             /* Resets any bottom offset */
+        margin-top: 2rem;         /* Places space above to separate from CTA button */
+        left: 50%;                /* Centers horizontally */
+        transform: translateX(-50%);
+        width: auto;             /* Prevents stretching full width */
+    }
+}
