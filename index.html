@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="icon" type="image/x-icon" href="icon.png">
     <meta charset="UTF-8">
@@ -8,16 +7,520 @@
     <meta name="description" content="Advocating for Climate Justice Education in the BASD">
     <meta name="msvalidate.01" content="77934870394C332D36D493E7C5C983A1" />
     <title>BCJEP - Bethlehem Climate Justice Education Project</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: #f0f9f0;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 60px;
+        }
+        
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            scroll-margin-top: 70px;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: #f0f9f0;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Bouncing scroll indicator */
+        .scroll-down-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            cursor: pointer;
+            color: #2E7D32;
+            font-weight: bold;
+            z-index: 5;
+        }
+        
+        .scroll-down-indicator .arrow {
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-down-indicator p {
+            margin-top: 0.25rem;
+            font-size: 1rem;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+        
+        .leaf {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #4CAF50;
+            opacity: 0;
+            border-radius: 0 50% 50% 50%;
+            animation: fall 10s linear infinite;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.2;
+            }
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #2E7D32;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2E7D32;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #388E3C;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #388E3C;
+            animation: slideUp 1s ease-out;
+        }
+        
+        .commitments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .commitment-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .commitment-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .commitment-number {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        
+        .why-matters {
+            background: #E8F5E9;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .why-matters ul {
+            list-style-position: inside;
+            margin: 1rem 0;
+        }
+        
+        .why-matters li {
+            margin: 1rem 0;
+            padding-left: 1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 1rem;
+        }
+        
+        .cta-button:hover {
+            background: #388E3C;
+            transform: scale(1.05);
+        }
+        
+        .coming-soon {
+            text-align: center;
+            padding: 4rem;
+            background: #E8F5E9;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .commitment-card h3 a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        .commitment-card h3 a:hover {
+            color: blue;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.5rem 1rem;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        nav .org-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2E7D32;
+            margin: 0;
+        }
+        
+        nav .org-name a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        nav .org-name a:hover {
+            color: #388E3C;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        nav a:hover {
+            color: #4CAF50;
+        }
+        
+        footer {
+            background: #2E7D32;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 1rem;
+            }
+            
+            nav .org-name {
+                font-size: 1rem;
+                max-width: 80%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                margin-top: 0;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Compact hero section */
+            .hero {
+                min-height: 90vh;
+                padding-top: 0;
+                justify-content: center;
+            }
+            
+            /* Position the arrow at a fixed distance below the CTA button */
+            .scroll-down-indicator {
+                position: relative;
+                bottom: auto;
+                margin-top: 2.5rem;
+                left: auto;
+                transform: none;
+                width: 100%;
+            }
+            
+            /* Make commitment cards more compact */
+            .commitment-card {
+                padding: 1.5rem;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+     <!-- Add this before the closing </head> tag -->
+<style>
+    /* Animation base classes with slower duration (1.5s instead of 0.8s) */
+    .animate {
+        opacity: 0;
+        transition: all 1.5s ease-out; /* Slowed down from 0.8s to 1.5s */
+    }
+    
+    /* Animation types */
+    .fade-in {
+        opacity: 0;
+    }
+    
+    /* Gentler slide up with less distance */
+    .slide-up {
+        opacity: 0;
+        transform: translateY(30px); /* Reduced from 50px for subtlety */
+    }
+    
+    /* Gentler scale effect */
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.95); /* Less dramatic scale (was 0.8) */
+    }
+    
+    /* Animated state (will be added by JavaScript) */
+    .animated {
+        opacity: 1;
+        transform: translate(0) scale(1);
+    }
+    
+    /* Longer stagger delays between elements */
+    .delay-1 { transition-delay: 0.1s; } /* Increased from 0.1s */
+    .delay-2 { transition-delay: 0.2s; } /* Increased from 0.2s */
+    .delay-3 { transition-delay: 0.3s; } /* Increased from 0.3s */
+    .delay-4 { transition-delay: 0.4s; } /* Increased from 0.4s */
+    .delay-5 { transition-delay: 0.55s; } /* Increased from 0.5s */
+    .delay-6 { transition-delay: 0.65s; } /* Increased from 0.6s */
+</style>
 
+<!-- Add this before the closing </head> tag -->
+<style>
+    /* Animation base classes with slower duration (1.5s instead of 0.8s) */
+    .animate {
+        opacity: 0;
+        transition: all 1.0s ease-out; /* Slowed down from 0.8s to 1.5s */
+    }
+    
+    /* Animation types */
+    .fade-in {
+        opacity: 0;
+    }
+    
+    /* Gentler slide up with less distance */
+    .slide-up {
+        opacity: 0;
+        transform: translateY(30px); /* Reduced from 50px for subtlety */
+    }
+    
+    /* Gentler scale effect */
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.8); /* Less dramatic scale (was 0.8) */
+    }
+    
+    /* Animated state (will be added by JavaScript) */
+    .animated {
+        opacity: 1;
+        transform: translate(0) scale(1);
+    }
+    
+    /* Longer stagger delays between elements */
+    .delay-1 { transition-delay: 0.1s; } /* Increased from 0.1s */
+    .delay-2 { transition-delay: 0.2s; } /* Increased from 0.2s */
+    .delay-3 { transition-delay: 0.3s; } /* Increased from 0.3s */
+    .delay-4 { transition-delay: 0.4s; } /* Increased from 0.4s */
+    .delay-5 { transition-delay: 0.6s; } /* Increased from 0.5s */
+    .delay-6 { transition-delay: 0.7s; } /* Increased from 0.6s */
+</style>
+
+<!-- Add this right before the closing </body> tag -->
+<!-- Add this before the closing </head> tag -->
+<style>
+    /* Animation base classes */
+    .animate {
+        opacity: 0;
+        transition: all 1.0s ease-out;
+    }
+    
+    .fade-in {
+        opacity: 0;
+    }
+    
+    .slide-up {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.80);
+    }
+    
+    /* Animated state */
+    .animated {
+        opacity: 1;
+        transform: translate(0) scale(1);
+    }
+    
+    /* Delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.6s; }
+    .delay-6 { transition-delay: 0.7s; }
+</style>
+
+<!-- Add this right before the closing </body> tag -->
+<script>
+    // Make sure the script runs after page load
+    window.addEventListener('load', function() {
+        // Check if Intersection Observer is supported
+        if ('IntersectionObserver' in window) {
+            // Apply animation classes first
+            document.querySelectorAll('section h2').forEach(el => {
+                el.classList.add('animate', 'fade-in');
+            });
+            
+            document.querySelectorAll('section p').forEach(el => {
+                el.classList.add('animate', 'fade-in');
+            });
+            
+            document.querySelectorAll('.cta-button').forEach(el => {
+                el.classList.add('animate', 'scale-in');
+            });
+            
+            document.querySelectorAll('.commitment-card').forEach((el, index) => {
+                el.classList.add('animate', 'slide-up', `delay-${Math.min(index+1, 6)}`);
+            });
+            
+            document.querySelectorAll('.why-matters li').forEach((el, index) => {
+                el.classList.add('animate', 'fade-in', `delay-${index % 3 + 1}`);
+            });
+            
+            document.querySelectorAll('.coming-soon').forEach(el => {
+                el.classList.add('animate', 'fade-in');
+            });
+            
+            // Now set up the observer
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            
+            // Observe all animate elements
+            document.querySelectorAll('.animate').forEach(el => {
+                observer.observe(el);
+            });
+            
+            console.log('Scroll animations initialized');
+        } else {
+            // Fallback for browsers without IntersectionObserver
+            console.log('IntersectionObserver not supported, applying animations immediately');
+            document.querySelectorAll('.animate').forEach(el => {
+                // Short delay to ensure transitions work
+                setTimeout(function() {
+                    el.classList.add('animated');
+                }, 100);
+            });
+        }
+    });
+</script>
+
+
+
+
+
+    </style>
+</head>
 <body>
     <nav>
-        <div class="org-name">
-            <a href="#">Bethlehem Climate Justice Education Project</a>
-        </div>
+        <div class="org-name"><a href="#">Bethlehem Climate Justice Education Project</a></div>
         <ul>
-            <!-- Additional nav items here if needed -->
+            <!-- Add your nav items here if desired -->
         </ul>
     </nav>
 
@@ -27,10 +530,16 @@
         <div class="leaf" style="left: 50%; animation-delay: 4s;"></div>
         <div class="leaf" style="left: 70%; animation-delay: 6s;"></div>
         <div class="leaf" style="left: 90%; animation-delay: 8s;"></div>
+
         <h1>Let's make the Change for a Sustainable Future</h1>
         <p class="subtitle">Petition to the BASD School Board for Climate Change Education (CCE)</p>
-        <a href="https://tally.so/r/3NRrol" class="cta-button" target="_blank">Sign the Petition</a>
-        <div class="scroll-down-indicator" onclick="document.querySelector('#commitments').scrollIntoView({ behavior: 'smooth' });">
+        
+        <a href="https://tally.so/r/3NRrol" class="cta-button" target="_blank">
+            Sign the Petition
+        </a>
+
+        <!-- Changed from absolute to relative positioning in mobile -->
+        <div class="scroll-down-indicator" onclick="document.querySelector('#commitments').scrollIntoView({behavior: 'smooth'});">
             <div class="arrow">&darr;</div>
             <p>Scroll</p>
         </div>
@@ -52,7 +561,7 @@
                 <div class="commitment-number">2</div>
                 <h3>
                     <a href="https://docs.google.com" target="_blank">
-                        Publicly Commit to Rapid Planning &amp; Implementation of CCE
+                        Publicly Commit to Rapid Planning & Implementation of CCE
                     </a>
                 </h3>
                 <p>Accelerate climate and sustainability education adoption for all levels and disciplines.</p>
@@ -110,9 +619,7 @@
         <div style="text-align: center;">
             <h3>Want to Read the Full Petition?</h3>
             <p>If you'd like to read the full petition in detail, please click the button below.</p>
-            <a href="https://docs.google.com/document/d/1yjYRGRC5X90Y9_QP29Fp_K1b_WjcQiNvKdPxSDzZfU0/edit?tab=t.0" 
-               class="cta-button" 
-               target="_blank">
+            <a href="https://docs.google.com/document/d/1yjYRGRC5X90Y9_QP29Fp_K1b_WjcQiNvKdPxSDzZfU0/edit?tab=t.0" class="cta-button" target="_blank">
                 Read the Full Petition
             </a>
         </div>
@@ -126,7 +633,7 @@
     </section>
 
     <section id="events">
-        <h2>Events &amp; Campaigns</h2>
+        <h2>Events & Campaigns</h2>
         <div class="coming-soon">
             <h3>Content coming soon!</h3>
         </div>
@@ -138,89 +645,28 @@
             <h3>Content coming soon!</h3>
         </div>
     </section>
-
+    
     <section id="contact">
-        <h2>Want to contact us?</h2>
-        <div class="contact-container">
-            <p>Reach out to us via email:</p>
-            <a href="mailto:gzahm@bcjep.org">gzahm@bcjep.org</a>
-            <p>We look forward to hearing from you!</p>
-        </div>
-    </section>
+    <h2>Want to contact us?</h2>
+    <div class="contact-container" style="text-align: center; padding: 2rem; background: #E8F5E9; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin: 2rem 0;">
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;">Reach out to us via email:</p>
+        <a href="mailto:gzahm@bcjep.org" style="color: #0066cc; font-size: 1.5rem; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
+            gzahm@bcjep.org
+        </a>
+        <p style="margin-top: 1.5rem; ">We look forward to hearing from you!</p>
+    </div>
+</section>
+
+     
 
     <footer>
-        © 2025 Bethlehem Climate Justice Education Project | All Rights Reserved
-        <div class="footer-subline">
-            Made with ♥️ by Patrick at Liberty High School.
-        </div>
-    </footer>
+    © 2025 Bethlehem Climate Justice Education Project | All Rights Reserved
+    <div class="footer-subline" style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.9;">
+        Made with ♥️ by Patrick at Liberty High School.
+    </div>
+</footer>
 
-    <!-- INTERSECTION OBSERVER SCRIPT -->
-    <script>
-        window.addEventListener('load', function() {
-    // First apply animation classes
-    document.querySelectorAll('section h2').forEach(el => {
-        el.classList.add('animate', 'fade-in');
-    });
-    
-    document.querySelectorAll('section p').forEach(el => {
-        el.classList.add('animate', 'fade-in');
-    });
-    
-    document.querySelectorAll('.cta-button').forEach(el => {
-        el.classList.add('animate', 'scale-in');
-    });
-    
-    document.querySelectorAll('.commitment-card').forEach((el, index) => {
-        el.classList.add('animate', 'slide-up', `delay-${Math.min(index+1, 6)}`);
-    });
-    
-    document.querySelectorAll('.why-matters li').forEach((el, index) => {
-        el.classList.add('animate', 'fade-in', `delay-${index % 3 + 1}`);
-    });
-    
-    document.querySelectorAll('.coming-soon').forEach(el => {
-        el.classList.add('animate', 'fade-in');
-    });
-    
-    // Add the ensure-visible class to all animate elements as a backup
-    document.querySelectorAll('.animate').forEach(el => {
-        el.classList.add('ensure-visible');
-    });
-    
-    // Set up the observer
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -30px 0px'
-        });
-        
-        // Observe all animate elements
-        document.querySelectorAll('.animate').forEach(el => {
-            observer.observe(el);
-        });
-    } else {
-        // Fallback for browsers without IntersectionObserver
-        document.querySelectorAll('.animate').forEach(el => {
-            // Force visibility immediately
-            el.classList.add('animated');
-        });
-    }
-    
-    // Safety net - force everything visible after 2.5 seconds regardless
-    setTimeout(function() {
-        document.querySelectorAll('.animate:not(.animated)').forEach(el => {
-            el.classList.add('animated');
-        });
-    }, 2500);
-});
-
-    </script>
+</body>
+</html>
 </body>
 </html>
