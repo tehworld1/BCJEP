@@ -452,12 +452,18 @@
 <script>
     // Make sure the script runs after page load
     window.addEventListener('load', function() {
-        // Check if Intersection Observer is supported
-        if ('IntersectionObserver' in window) {
-            // Apply animation classes first
-            document.querySelectorAll('section h2').forEach(el => {
-                el.classList.add('animate', 'fade-in');
-            });
+    // Make sure the scroll indicator is immediately visible after its animation
+    setTimeout(() => {
+        document.querySelector('.scroll-down-indicator').classList.add('animated');
+    }, 1100);
+    
+    // First apply animation classes to other elements
+    document.querySelectorAll('section h2').forEach(el => {
+        el.classList.add('animate', 'fade-in');
+    });
+    
+    // ... rest of your code
+
             
             document.querySelectorAll('section p').forEach(el => {
                 el.classList.add('animate', 'fade-in');
