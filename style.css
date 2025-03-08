@@ -401,3 +401,19 @@ footer {
 body:not(:has(.animated)) .animate {
     animation: ensureVisible 1s forwards 2s;
 }
+/* Special animation just for the scroll indicator */
+.scroll-down-indicator {
+    opacity: 0; /* Start invisible */
+    animation: fadeInScroll 1s ease-out forwards 1s; /* Fade in after 1s delay */
+}
+
+@keyframes fadeInScroll {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Make sure the scroll indicator stays visible */
+.scroll-down-indicator.animated,
+.scroll-down-indicator.ensure-visible {
+    opacity: 1;
+}
