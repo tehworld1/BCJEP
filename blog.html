@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCJEP Blog - Updates & Progress</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #f0f9f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles - Now left-aligned by default */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #2e7d32;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            z-index: 1000;
+            text-align: left; /* Changed from center to left */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Blog Hero Section */
+        .blog-hero {
+            background: #2e7d32; /* Solid color instead of gradient */
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .blog-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Blog Container */
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 70% 30%;
+            gap: 2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-post {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .blog-post:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-title {
+            color: #2e7d32;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .post-title:hover {
+            color: #388e3c;
+        }
+
+        .post-excerpt {
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: #2e7d32;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            background: #388e3c;
+            transform: translateY(-2px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 5rem;
+            height: fit-content;
+        }
+
+        .sidebar-widget {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-widget h3 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Animation classes to match main site */
+        .animate {
+            opacity: 0;
+            transition: all 1.0s ease-out;
+        }
+        
+        .fade-in {
+            opacity: 0;
+        }
+        
+        .slide-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .animated {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+        
+        /* Delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                font-size: 1rem;
+                padding: 0.5rem;
+                text-align: center; /* Center text on mobile */
+            }
+
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-container {
+                padding: 0 1rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .post-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>BCJEP - Bethlehem Climate Justice Education Project</header>
+
+    <div class="blog-hero">
+        <h1>Latest Updates & Progress</h1>
+        <p>Stay informed about our initiatives and achievements</p>
+    </div>
+
+    <div class="blog-container">
+        <main class="main-content">
+            <article class="blog-post animate slide-up delay-1">
+                <h2 class="post-title">New Environmental Science Curriculum Approved</h2>
+                <div class="post-meta">Published on March 8, 2025 | By BCJEP Team</div>
+                <p class="post-excerpt">
+                    The Bethlehem Area School District has approved our proposal for a comprehensive environmental science curriculum. This groundbreaking decision marks a significant step forward in our mission to integrate climate education into our schools.
+                </p>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article class="blog-post animate slide-up delay-2">
+                <h2 class="post-title">Student Leadership in Climate Action</h2>
+                <div class="post-meta">Published on March 5, 2025 | By Student Council</div>
+                <p class="post-excerpt">
+                    Liberty High School students are taking the lead in promoting climate awareness through various initiatives. From organizing workshops to implementing recycling programs, our students are making a real difference.
+                </p>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+
+            <article class="blog-post animate slide-up delay-3">
+                <h2 class="post-title">Community Partnership Success</h2>
+                <div class="post-meta">Published on March 1, 2025 | By BCJEP Team</div>
+                <p class="post-excerpt">
+                    Our recent partnership with local environmental organizations has opened new opportunities for hands-on learning experiences. Students will now have access to real-world climate action projects.
+                </p>
+                <a href="#" class="read-more">Read More</a>
+            </article>
+        </main>
+
+        <aside class="sidebar">
+            <!-- Categories section removed as requested -->
+            
+            <div class="sidebar-widget animate fade-in delay-2">
+                <h3>Get Involved</h3>
+                <p>Join our mission to promote climate education in Bethlehem schools.</p>
+                <a href="#" class="read-more" style="margin-top: 1rem; display: inline-block;">Learn More</a>
+            </div>
+            
+            <!-- You might want to add another widget here -->
+            <div class="sidebar-widget animate fade-in delay-3">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our monthly newsletter for the latest updates.</p>
+                <form style="margin-top: 1rem;">
+                    <input type="email" placeholder="Your email address" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid #ddd; border-radius: 0.25rem;">
+                    <button type="submit" class="read-more" style="cursor: pointer; border: none; width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // Animation script to match main site
+        window.addEventListener('load', function() {
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animated');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -30px 0px'
+                });
+                
+                // Observe all animate elements
+                document.querySelectorAll('.animate').forEach(el => {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                document.querySelectorAll('.animate').forEach(el => {
+                    // Short delay to ensure transitions work
+                    setTimeout(function() {
+                        el.classList.add('animated');
+                    }, 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
