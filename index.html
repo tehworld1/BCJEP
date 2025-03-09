@@ -502,7 +502,7 @@
 
         <div class="subtle-counter">
     <div class="subtle-pulse"></div>
-    <span class="subtle-count" data-target="sheetValue">sheetValue</span>
+    <span class="subtle-count" id="sheetValue">0</span>
     <span class="subtle-label">people have signed</span>
 </div>
         <a href="https://tally.so/r/3NRrol" class="cta-button" target="_blank">
@@ -682,18 +682,35 @@
                     rootMargin: '0px 0px -30px 0px'
                 });
 
-        // Count-up animation
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize the counter
-    const counter = document.querySelector('.subtle-count');
-    const target = parseInt(counter.getAttribute('data-target'));
-    
-    // Start from 0
+        // Replace the existing fetch code in your script with this:
+fetch('/api/getSheetData')
+    .then(response => response.json())
+    .then(data => {
+        if (data.value) {
+            const targetValue = parseInt(data.value);
+            
+            if (!isNaN(targetValue)) {
+                // Start the count-up animation
+                animateCountUp(targetValue);
+            } else {
+                document.getElementById('sheetValue').innerText = data.value;
+            }
+        } else {
+            document.getElementById('sheetValue').innerText = '0';
+        }
+    })
+    .catch(error => {
+        document.getElementById('sheetValue').innerText = '0';
+        console.error('Error:', error);
+    });
+
+// Add this count-up animation function to your script
+function animateCountUp(target) {
+    const counterElement = document.getElementById('sheetValue');
     let current = 0;
-    counter.textContent = current;
+    counterElement.textContent = current;
     
-    // Determine the speed (higher number = slower animation)
-    // Calculate to make the animation take about 2 seconds
+    // Animation settings
     const duration = 2000; // 2 seconds
     const increment = target / (duration / 15); // Update every 15ms
     
@@ -708,9 +725,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Update the display (round to avoid decimals)
-        counter.textContent = Math.round(current);
+        counterElement.textContent = Math.round(current);
     }, 15);
-});
+}
+
                 
                 // Fetch data from the Vercel API route
         fetch('/api/getSheetData')
