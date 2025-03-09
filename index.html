@@ -53,6 +53,43 @@
   max-width: 100%; /* Ensures it doesn't exceed container width */
 }
 
+        /* Subtle Counter Styles */
+.subtle-counter {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.subtle-counter:hover {
+    opacity: 1;
+}
+
+.subtle-pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    margin-right: 8px;
+    position: relative;
+}
+
+.subtle-pulse::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(76, 175, 80, 0.4);
+    animation: subtle-ring 3s ease-out infinite;
+    top: 0;
+    left: 0;
+}
+
+
+        
         
         /* Bouncing scroll indicator with dedicated animation */
         .scroll-down-indicator {
@@ -431,7 +468,12 @@
         <div class="leaf" style="left: 90%; animation-delay: 8s;"></div>
         <h1>Let's make the Change for a Sustainable Future</h1>
         <p class="subtitle">Petition to the BASD School Board for Climate Change Education (CCE) <p>The value in cell A1 is: <span id="sheetValue">Loading...</span></p></p>
-        
+
+        <div class="subtle-counter">
+    <div class="subtle-pulse"></div>
+    <span class="subtle-count" data-target="sheetValue">0</span>
+    <span class="subtle-label">people have signed</span>
+</div>
         <a href="https://tally.so/r/3NRrol" class="cta-button" target="_blank">
             Sign the Petition
         </a>
