@@ -430,7 +430,7 @@
         <div class="leaf" style="left: 70%; animation-delay: 6s;"></div>
         <div class="leaf" style="left: 90%; animation-delay: 8s;"></div>
         <h1>Let's make the Change for a Sustainable Future</h1>
-        <p class="subtitle">Petition to the BASD School Board for Climate Change Education (CCE)</p>
+        <p class="subtitle">Petition to the BASD School Board for Climate Change Education (CCE) <p>The value in cell A1 is: <span id="sheetValue">Loading...</span></p></p>
         
         <a href="https://tally.so/r/3NRrol" class="cta-button" target="_blank">
             Sign the Petition
@@ -608,6 +608,23 @@
                     threshold: 0.1,
                     rootMargin: '0px 0px -30px 0px'
                 });
+
+
+                // Fetch data from the Vercel API route
+        fetch('/api/getSheetData')
+            .then(response => response.json())
+            .then(data => {
+                if (data.value) {
+                    // Update the HTML to display the fetched value
+                    document.getElementById('sheetValue').innerText = data.value;
+                } else {
+                    document.getElementById('sheetValue').innerText = 'No data found';
+                }
+            })
+            .catch(error => {
+                document.getElementById('sheetValue').innerText = 'Error fetching data';
+                console.error('Error:', error);
+            });
                 
                 // Observe all animate elements
                 document.querySelectorAll('.animate').forEach(el => {
