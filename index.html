@@ -486,7 +486,7 @@
     <nav>
         <div class="org-name"><a href="#">Bethlehem Climate Justice Education Project</a></div>
         <ul>
-            <!-- Add your nav items here if desired -->
+            <!-- Add the nav items here if desired -->
         </ul>
     </nav>
 
@@ -669,7 +669,7 @@
                 el.classList.add('animate', 'fade-in');
             });
             
-            // Now set up the observer
+            // the observer
             if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver(function(entries) {
                     entries.forEach(function(entry) {
@@ -682,7 +682,7 @@
                     rootMargin: '0px 0px -30px 0px'
                 });
 
-        // Replace the existing fetch code in your script with this:
+    
 fetch('/api/getSheetData')
     .then(response => response.json())
     .then(data => {
@@ -704,7 +704,7 @@ fetch('/api/getSheetData')
         console.error('Error:', error);
     });
 
-// Add this count-up animation function to your script
+// count-up animation function
 function animateCountUp(target) {
     const counterElement = document.getElementById('sheetValue');
     let current = 0;
